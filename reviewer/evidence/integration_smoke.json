@@ -1,0 +1,64 @@
+{
+  "type": "integration_smoke_not_learning_validation",
+  "elapsed_seconds": 29.796869456011336,
+  "matrix": [
+    {
+      "robot": "ur5e",
+      "task": "cup_plate",
+      "rl_parameter_delta": 0.3160109519958496,
+      "rl_steps": 64,
+      "integration": true
+    },
+    {
+      "robot": "ur5e",
+      "task": "cup_shelf",
+      "rl_parameter_delta": 0.3347213566303253,
+      "rl_steps": 64,
+      "integration": true
+    },
+    {
+      "robot": "ur5e",
+      "task": "swap",
+      "rl_parameter_delta": 0.3392944037914276,
+      "rl_steps": 64,
+      "integration": true
+    },
+    {
+      "robot": "ur5e",
+      "task": "sort",
+      "rl_parameter_delta": 0.559992253780365,
+      "rl_steps": 64,
+      "integration": true
+    },
+    {
+      "robot": "iiwa14",
+      "task": "cup_plate",
+      "rl_parameter_delta": 0.5341892242431641,
+      "rl_steps": 64,
+      "integration": true
+    },
+    {
+      "robot": "iiwa14",
+      "task": "cup_shelf",
+      "rl_parameter_delta": 0.4988742172718048,
+      "rl_steps": 64,
+      "integration": true
+    },
+    {
+      "robot": "iiwa14",
+      "task": "swap",
+      "rl_parameter_delta": 0.5065127611160278,
+      "rl_steps": 64,
+      "integration": true
+    },
+    {
+      "robot": "iiwa14",
+      "task": "sort",
+      "rl_parameter_delta": 0.5130022168159485,
+      "rl_steps": 64,
+      "integration": true
+    }
+  ],
+  "grading_cases": 64,
+  "grading_errors": []
+}

@@ -1,0 +1,65 @@
+{
+  "training": {
+    "schema": 1,
+    "algorithm": "PPO",
+    "robot": "ur5e",
+    "task": "cup_plate",
+    "timesteps": 32768,
+    "parameter_delta_l2": 5.581895351409912,
+    "seed": 0,
+    "reward_stage": "reach",
+    "sha256": "11274935dd4ad0b9abc64f56c8c9bada193148b68db6ee357e516795277d84e5",
+    "config": {
+      "robot": "ur5e",
+      "task": "cup_plate",
+      "total_steps": 32768,
+      "n_steps": 256,
+      "n_envs": 8,
+      "seed": 0,
+      "learning_rate": 0.0003,
+      "ent_coef": 0.01,
+      "reward_stage": "reach",
+      "parameters": {},
+      "resume": null
+    }
+  },
+  "evaluation": {
+    "robot": "ur5e",
+    "task": "cup_plate",
+    "parameters": {},
+    "max_steps": 1000,
+    "success_rate": 0.0,
+    "successes": 0,
+    "n": 3,
+    "wilson_95": [
+      5.551115123125783e-17,
+      0.5614970317550454
+    ],
+    "episodes": [
+      {
+        "seed": 50000,
+        "success": false,
+        "steps": 1000,
+        "reward": 21.83621636120865,
+        "failure": "timeout"
+      },
+      {
+        "seed": 50001,
+        "success": false,
+        "steps": 1000,
+        "reward": 23.828426749642862,
+        "failure": "timeout"
+      },
+      {
+        "seed": 50002,
+        "success": false,
+        "steps": 1000,
+        "reward": 23.869678032050217,
+        "failure": "timeout"
+      }
+    ],
+    "checkpoint": "runs/pilot_reach/last.zip",
+    "kind": "rl"
+  },
+  "scope": "Short reach-stage pilot; not full task training. Predates final settling tolerance adjustment."
+}

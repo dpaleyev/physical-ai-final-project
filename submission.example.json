@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "report": "REPORT.md",
+  "models": [
+    {
+      "robot": "ur5e",
+      "task": "cup_plate",
+      "rl": "artifacts/ur5e/cup_plate/rl/last.zip",
+      "bc_baseline": "artifacts/ur5e/cup_plate/baseline/best.ts",
+      "bc_proprio": "artifacts/ur5e/cup_plate/proprio/best.ts",
+      "bc_robust": "artifacts/ur5e/cup_plate/robust/best.ts"
+    },
+    {
+      "robot": "ur5e",
+      "task": "cup_shelf",
+      "rl": "artifacts/ur5e/cup_shelf/rl/last.zip",
+      "bc_baseline": "artifacts/ur5e/cup_shelf/baseline/best.ts",
+      "bc_proprio": "artifacts/ur5e/cup_shelf/proprio/best.ts",
+      "bc_robust": "artifacts/ur5e/cup_shelf/robust/best.ts"
+    },
+    {
+      "robot": "ur5e",
+      "task": "swap",
+      "rl": "artifacts/ur5e/swap/rl/last.zip",
+      "bc_baseline": "artifacts/ur5e/swap/baseline/best.ts",
+      "bc_proprio": "artifacts/ur5e/swap/proprio/best.ts",
+      "bc_robust": "artifacts/ur5e/swap/robust/best.ts"
+    },
+    {
+      "robot": "ur5e",
+      "task": "sort",
+      "rl": "artifacts/ur5e/sort/rl/last.zip",
+      "bc_baseline": "artifacts/ur5e/sort/baseline/best.ts",
+      "bc_proprio": "artifacts/ur5e/sort/proprio/best.ts",
+      "bc_robust": "artifacts/ur5e/sort/robust/best.ts"
+    },
+    {
+      "robot": "iiwa14",
+      "task": "cup_plate",
+      "rl": "artifacts/iiwa14/cup_plate/rl/last.zip",
+      "bc_baseline": "artifacts/iiwa14/cup_plate/baseline/best.ts",
+      "bc_proprio": "artifacts/iiwa14/cup_plate/proprio/best.ts",
+      "bc_robust": "artifacts/iiwa14/cup_plate/robust/best.ts"
+    },
+    {
+      "robot": "iiwa14",
+      "task": "cup_shelf",
+      "rl": "artifacts/iiwa14/cup_shelf/rl/last.zip",
+      "bc_baseline": "artifacts/iiwa14/cup_shelf/baseline/best.ts",
+      "bc_proprio": "artifacts/iiwa14/cup_shelf/proprio/best.ts",
+      "bc_robust": "artifacts/iiwa14/cup_shelf/robust/best.ts"
+    },
+    {
+      "robot": "iiwa14",
+      "task": "swap",
+      "rl": "artifacts/iiwa14/swap/rl/last.zip",
+      "bc_baseline": "artifacts/iiwa14/swap/baseline/best.ts",
+      "bc_proprio": "artifacts/iiwa14/swap/proprio/best.ts",
+      "bc_robust": "artifacts/iiwa14/swap/robust/best.ts"
+    },
+    {
+      "robot": "iiwa14",
+      "task": "sort",
+      "rl": "artifacts/iiwa14/sort/rl/last.zip",
+      "bc_baseline": "artifacts/iiwa14/sort/baseline/best.ts",
+      "bc_proprio": "artifacts/iiwa14/sort/proprio/best.ts",
+      "bc_robust": "artifacts/iiwa14/sort/robust/best.ts"
+    }
+  ]
+}
