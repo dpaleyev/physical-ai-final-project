@@ -10,7 +10,7 @@ from stable_baselines3 import PPO
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv
 from stable_baselines3.common.logger import configure
-from physical_ai.env import ManipulationEnv
+from physical_ai.env import DISCOUNT, REWARD_VERSION, ManipulationEnv
 from physical_ai.scenes import ROBOTS, TASKS
 
 
@@ -82,6 +82,9 @@ def train(
         reward_stage=reward_stage,
         parameters=parameters or {},
         resume=str(resume) if resume else None,
+        gamma=DISCOUNT,
+        reward_version=REWARD_VERSION,
+        environment_sha256=sha256(Path(__file__).with_name("env.py")),
     )
     (out / "config.json").write_text(json.dumps(config, indent=2))
     try:
@@ -91,6 +94,7 @@ def train(
                 robot,
                 task,
                 env=env,
+                gamma=DISCOUNT,
                 n_steps=n_steps,
                 seed=seed,
                 learning_rate=learning_rate,
@@ -106,7 +110,7 @@ def train(
                 n_epochs=10,
                 learning_rate=learning_rate,
                 ent_coef=ent_coef,
-                gamma=0.995,
+                gamma=DISCOUNT,
                 policy_kwargs={"net_arch": dict(pi=[256, 256], vf=[256, 256])},
                 seed=seed,
                 device="cpu",

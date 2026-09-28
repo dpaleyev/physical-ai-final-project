@@ -11,7 +11,7 @@ ROBOTS = {
     "ur5e": ("universal_robots_ur5e", "ur5e.xml", 6),
     "iiwa14": ("kuka_iiwa_14", "iiwa14.xml", 7),
 }
-TASKS = ("cup_plate", "cup_shelf", "swap", "sort")
+TASKS = ("cup_plate", "cup_shelf", "cup_distractor", "color_match")
 COLORS = [(0.8, 0.12, 0.12, 1), (0.1, 0.3, 0.85, 1), (0.15, 0.7, 0.25, 1)]
 TABLE = 0.4
 
@@ -31,16 +31,12 @@ def scene_layout(task):
         return [[0.42, -0.14, 0.438]], [[0.48, 0.16, 0.448]]
     if task == "cup_shelf":
         return [[0.42, -0.14, 0.438]], [[0.48, 0.17, 0.588]]
-    if task == "swap":
-        return [[0.43, -0.16, 0.438], [0.43, 0.16, 0.438]], [
-            [0.43, 0.16, 0.438],
-            [0.43, -0.16, 0.438],
+    if task == "cup_distractor":
+        return [[0.42, -0.14, 0.438], [0.63, 0, 0.438]], [
+            [0.48, 0.16, 0.448],
+            [0.63, 0, 0.438],
         ]
-    return [[0.34, -0.20, 0.438], [0.50, -0.20, 0.438], [0.65, -0.20, 0.438]], [
-        [0.34, 0.17, 0.448],
-        [0.50, 0.17, 0.448],
-        [0.65, 0.17, 0.448],
-    ]
+    return [[0.46, -0.14, 0.438]], [[0.37, 0.16, 0.448], [0.61, 0.16, 0.448]]
 
 
 def build_scene(robot, task, parameters=None):
@@ -146,7 +142,7 @@ def build_scene(robot, task, parameters=None):
             forcerange="-8 8",
         )
     starts, goals = scene_layout(task)
-    for i, (start, goal) in enumerate(zip(starts, goals)):
+    for i, start in enumerate(starts):
         cup = add(wb, "body", name=f"cup{i}", pos=vec(start))
         add(cup, "freejoint", name=f"cup{i}_free")
         add(
@@ -192,10 +188,13 @@ def build_scene(robot, task, parameters=None):
                 mass=".002",
                 rgba=vec(COLORS[i]),
             )
+    for i, goal in enumerate(goals):
         target = add(
             wb, "body", name=f"target{i}", pos=vec([goal[0], goal[1], goal[2] - 0.034])
         )
-        if task in ("cup_plate", "sort"):
+        if task in ("cup_plate", "color_match") or (
+            task == "cup_distractor" and i == 0
+        ):
             add(
                 target,
                 "geom",
@@ -216,7 +215,7 @@ def build_scene(robot, task, parameters=None):
                     pos=vec([0.064 * math.cos(theta), 0.064 * math.sin(theta), 0.001]),
                     rgba=vec(COLORS[i]),
                 )
-        elif task == "swap":
+        elif task == "cup_distractor":
             add(
                 target,
                 "geom",
@@ -289,6 +288,10 @@ def write_scenes():
 
             with ManipulationEnv(robot, task) as env:
                 tree = ET.fromstring(xml)
+                for geom in tree.iter("geom"):
+                    name = geom.get("name")
+                    if name and name.startswith("cup"):
+                        geom.set("rgba", vec(env.model.geom(name).rgba))
                 keys = add(tree, "keyframe")
                 add(
                     keys,

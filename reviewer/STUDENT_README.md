@@ -35,14 +35,14 @@ python -m physical_ai.scene_tools --robot ur5e --task cup_plate --snapshot runs/
 Для интерактивного окна на Linux с графической сессией:
 
 ```bash
-MUJOCO_GL=glfw python -m physical_ai.scene_tools --robot iiwa14 --task swap
+MUJOCO_GL=glfw python -m physical_ai.scene_tools --robot iiwa14 --task cup_distractor
 ```
 
 Для сервера без дисплея используйте snapshots/видео. При рабочем NVIDIA-драйвере
 можно выбрать `MUJOCO_GL=egl`. Для CUDA-обучения BC установите PyTorch 2.7.1
 под свою CUDA-среду; поставляемый Docker использует CPU-сборку.
 
-Сцены: `scenes/{ur5e,iiwa14}_{cup_plate,cup_shelf,swap,sort}.xml`.
+Сцены: `scenes/{ur5e,iiwa14}_{cup_plate,cup_shelf,cup_distractor,color_match}.xml`.
 В команду просмотра подставляйте любую пару. Исходные роботы и лицензии в `assets/`.
 
 ## Проверка запуска обучения

@@ -166,22 +166,22 @@
     <camera name="overview" pos="1.25 -1.15 1.35" xyaxes=".75 .66 0 -.34 .39 .86" fovy="48" />
     <body name="cup0" pos="0.42 -0.14 0.438">
       <freejoint name="cup0_free" />
-      <geom name="cup0_bottom" type="cylinder" size=".027 .004" pos="0 0 -.03" mass=".03" rgba="0.8 0.12 0.12 1" friction="1.2 .01 .001" />
-      <geom name="cup0_wall0" type="box" size=".004 .008 .032" pos="0.026 0 0" euler="0 0 0.0" mass=".004" rgba="0.8 0.12 0.12 1" friction="1.2 .01 .001" />
-      <geom name="cup0_wall1" type="box" size=".004 .008 .032" pos="0.02251666 0.013 0" euler="0 0 0.5235987755982988" mass=".004" rgba="0.8 0.12 0.12 1" friction="1.2 .01 .001" />
-      <geom name="cup0_wall2" type="box" size=".004 .008 .032" pos="0.013 0.02251666 0" euler="0 0 1.0471975511965976" mass=".004" rgba="0.8 0.12 0.12 1" friction="1.2 .01 .001" />
-      <geom name="cup0_wall3" type="box" size=".004 .008 .032" pos="1.5920408e-18 0.026 0" euler="0 0 1.5707963267948966" mass=".004" rgba="0.8 0.12 0.12 1" friction="1.2 .01 .001" />
-      <geom name="cup0_wall4" type="box" size=".004 .008 .032" pos="-0.013 0.02251666 0" euler="0 0 2.0943951023931953" mass=".004" rgba="0.8 0.12 0.12 1" friction="1.2 .01 .001" />
-      <geom name="cup0_wall5" type="box" size=".004 .008 .032" pos="-0.02251666 0.013 0" euler="0 0 2.6179938779914944" mass=".004" rgba="0.8 0.12 0.12 1" friction="1.2 .01 .001" />
-      <geom name="cup0_wall6" type="box" size=".004 .008 .032" pos="-0.026 3.1840817e-18 0" euler="0 0 3.141592653589793" mass=".004" rgba="0.8 0.12 0.12 1" friction="1.2 .01 .001" />
-      <geom name="cup0_wall7" type="box" size=".004 .008 .032" pos="-0.02251666 -0.013 0" euler="0 0 3.665191429188092" mass=".004" rgba="0.8 0.12 0.12 1" friction="1.2 .01 .001" />
-      <geom name="cup0_wall8" type="box" size=".004 .008 .032" pos="-0.013 -0.02251666 0" euler="0 0 4.1887902047863905" mass=".004" rgba="0.8 0.12 0.12 1" friction="1.2 .01 .001" />
-      <geom name="cup0_wall9" type="box" size=".004 .008 .032" pos="-4.7761225e-18 -0.026 0" euler="0 0 4.71238898038469" mass=".004" rgba="0.8 0.12 0.12 1" friction="1.2 .01 .001" />
-      <geom name="cup0_wall10" type="box" size=".004 .008 .032" pos="0.013 -0.02251666 0" euler="0 0 5.235987755982989" mass=".004" rgba="0.8 0.12 0.12 1" friction="1.2 .01 .001" />
-      <geom name="cup0_wall11" type="box" size=".004 .008 .032" pos="0.02251666 -0.013 0" euler="0 0 5.759586531581287" mass=".004" rgba="0.8 0.12 0.12 1" friction="1.2 .01 .001" />
-      <geom name="cup0_handle0" type="capsule" fromto="0.03 0 -0.02 0.048 0 -0.02" size=".004" mass=".002" rgba="0.8 0.12 0.12 1" />
-      <geom name="cup0_handle1" type="capsule" fromto="0.048 0 -0.02 0.048 0 0.02" size=".004" mass=".002" rgba="0.8 0.12 0.12 1" />
-      <geom name="cup0_handle2" type="capsule" fromto="0.048 0 0.02 0.03 0 0.02" size=".004" mass=".002" rgba="0.8 0.12 0.12 1" />
+      <geom name="cup0_bottom" type="cylinder" size=".027 .004" pos="0 0 -.03" mass=".03" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_wall0" type="box" size=".004 .008 .032" pos="0.026 0 0" euler="0 0 0.0" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_wall1" type="box" size=".004 .008 .032" pos="0.02251666 0.013 0" euler="0 0 0.5235987755982988" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_wall2" type="box" size=".004 .008 .032" pos="0.013 0.02251666 0" euler="0 0 1.0471975511965976" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_wall3" type="box" size=".004 .008 .032" pos="1.5920408e-18 0.026 0" euler="0 0 1.5707963267948966" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_wall4" type="box" size=".004 .008 .032" pos="-0.013 0.02251666 0" euler="0 0 2.0943951023931953" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_wall5" type="box" size=".004 .008 .032" pos="-0.02251666 0.013 0" euler="0 0 2.6179938779914944" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_wall6" type="box" size=".004 .008 .032" pos="-0.026 3.1840817e-18 0" euler="0 0 3.141592653589793" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_wall7" type="box" size=".004 .008 .032" pos="-0.02251666 -0.013 0" euler="0 0 3.665191429188092" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_wall8" type="box" size=".004 .008 .032" pos="-0.013 -0.02251666 0" euler="0 0 4.1887902047863905" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_wall9" type="box" size=".004 .008 .032" pos="-4.7761225e-18 -0.026 0" euler="0 0 4.71238898038469" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_wall10" type="box" size=".004 .008 .032" pos="0.013 -0.02251666 0" euler="0 0 5.235987755982989" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_wall11" type="box" size=".004 .008 .032" pos="0.02251666 -0.013 0" euler="0 0 5.759586531581287" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_handle0" type="capsule" fromto="0.03 0 -0.02 0.048 0 -0.02" size=".004" mass=".002" rgba="0.80000001 0.12 0.12 1" />
+      <geom name="cup0_handle1" type="capsule" fromto="0.048 0 -0.02 0.048 0 0.02" size=".004" mass=".002" rgba="0.80000001 0.12 0.12 1" />
+      <geom name="cup0_handle2" type="capsule" fromto="0.048 0 0.02 0.03 0 0.02" size=".004" mass=".002" rgba="0.80000001 0.12 0.12 1" />
     </body>
     <body name="target0" pos="0.48 0.16 0.414">
       <geom name="plate0" type="cylinder" size=".067 .005" pos="0 0 -.005" rgba="0.8 0.12 0.12 1" />

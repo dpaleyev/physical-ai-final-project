@@ -10,6 +10,9 @@ import numpy as np
 from gymnasium import spaces
 from physical_ai.scenes import ROBOTS, build_scene
 
+DISCOUNT = 0.995
+REWARD_VERSION = 2
+
 
 class ManipulationEnv(gym.Env):
     metadata = {"render_modes": ["rgb_array"], "render_fps": 20}
@@ -48,8 +51,7 @@ class ManipulationEnv(gym.Env):
         self.jaw_q = self.model.jnt_qposadr[self.jaw_jids]
         self.jaw_v = self.model.jnt_dofadr[self.jaw_jids]
         self.object_names = [
-            f"cup{i}"
-            for i in range(3 if task == "sort" else 2 if task == "swap" else 1)
+            f"cup{i}" for i in range(2 if task == "cup_distractor" else 1)
         ]
         self.grasp_id = self.model.site("grasp").id
         self.action_space = spaces.Box(-1, 1, (4,), np.float32)
@@ -120,32 +122,21 @@ class ManipulationEnv(gym.Env):
                 for i in range(len(self.object_names))
             ]
         )
-        if self.task == "sort":
-            import itertools
-
-            cup_colors = np.array(
-                [
-                    self.model.geom(f"cup{i}_bottom").rgba[:3]
-                    for i in range(len(self.object_names))
-                ]
+        if self.task == "color_match":
+            colors = np.array(
+                [self.model.geom(f"plate{i}").rgba.copy() for i in range(2)]
             )
-            plate_colors = np.array(
-                [
-                    self.model.geom(f"plate{i}").rgba[:3]
-                    for i in range(len(self.object_names))
-                ]
-            )
-            orders = list(itertools.permutations(range(len(self.object_names))))
-            order = min(
-                orders, key=lambda p: np.linalg.norm(cup_colors - plate_colors[list(p)])
-            )
-            if np.max(np.abs(cup_colors - plate_colors[list(order)])) > 0.01:
-                raise ValueError("Each cup requires exactly one matching plate color")
-            self.goals = self.goals[list(order)]
-        if self.task == "swap":
+            if np.max(np.abs(colors[0, :3] - colors[1, :3])) < 0.1:
+                raise ValueError("Use two visually distinct plate colors")
+            selected = int(self.np_random.integers(2))
+            body_id = self.model.body("cup0").id
+            self.model.geom_rgba[self.model.geom_bodyid == body_id] = colors[selected]
             self.goals = np.array(
-                [self.data.body(name).xpos.copy() for name in self.object_names]
-            )[::-1]
+                [self.data.body(f"target{selected}").xpos + [0, 0, 0.034]]
+            )
+        if self.task == "cup_distractor":
+            self.goals[1] = self.data.body("cup1").xpos.copy()
+        self._distractor_moved = False
         self.steps = self.stable_steps = 0
         self._previous_score = self._potential()
         return self.get_privileged_state(), {"is_success": False}
@@ -177,6 +168,8 @@ class ManipulationEnv(gym.Env):
         return self.renderer.render().copy()
 
     def placement_complete(self):
+        if self._distractor_moved:
+            return False
         for i, name in enumerate(self.object_names):
             b = self.data.body(name)
             if np.linalg.norm(b.xpos[:2] - self.goals[i, :2]) > 0.035:
@@ -197,12 +190,12 @@ class ManipulationEnv(gym.Env):
         return bool(np.min(self.data.qpos[self.jaw_q]) > 0.03)
 
     def success(self):
-        return self.stable_steps >= 8
+        return self.stable_steps >= 8 and not self._distractor_moved
 
     def _potential(self):
         ee = self.data.site("grasp").xpos
         terms = []
-        for i, name in enumerate(self.object_names):
+        for i, name in enumerate(self.object_names[:1]):
             p = self.data.body(name).xpos
             reach = 1 - np.tanh(8 * np.linalg.norm(ee - p))
             lift = np.clip((p[2] - 0.435) / 0.12, 0, 1)
@@ -235,17 +228,28 @@ class ManipulationEnv(gym.Env):
             mujoco.mj_step(self.model, self.data, nstep=5)
         mujoco.mj_forward(self.model, self.data)
         self.steps += 1
+        if self.task == "cup_distractor":
+            self._distractor_moved |= bool(
+                np.linalg.norm(self.data.body("cup1").xpos[:2] - self.goals[1, :2])
+                > 0.02
+            )
         self.stable_steps = self.stable_steps + 1 if self.placement_complete() else 0
         score = self._potential()
-        reward = (
-            5 * (score - self._previous_score)
-            + 0.02 * score
-            - 0.002 * float(action[:3] @ action[:3])
-        )
-        self._previous_score = score
-        failed = any(self.data.body(name).xpos[2] < 0.32 for name in self.object_names)
+        dropped = any(self.data.body(name).xpos[2] < 0.32 for name in self.object_names)
+        failed = dropped or self._distractor_moved
         ok = self.success()
-        reward += 20 * ok - 5 * failed
+        if self.reward_stage == "place":
+            # Discounted potential shaping: stationary partial solutions must not
+            # earn an endless positive reward. True terminal states have Phi=0;
+            # time-limit truncations retain Phi because PPO bootstraps them.
+            next_potential = 0.0 if ok or failed else score
+            reward = 5 * (DISCOUNT * next_potential - self._previous_score)
+        else:
+            # Auxiliary curriculum objectives; final models must train on place.
+            reward = 5 * (score - self._previous_score) + 0.02 * score
+        reward -= 0.002 * float(action[:3] @ action[:3])
+        reward += 100 * ok - 5 * failed
+        self._previous_score = score
         return (
             self.get_privileged_state(),
             float(reward),
@@ -254,9 +258,13 @@ class ManipulationEnv(gym.Env):
             {
                 "is_success": ok,
                 "failure": (
-                    "dropped"
-                    if failed
-                    else "timeout" if self.steps >= self.max_steps else ""
+                    "distractor_moved"
+                    if self._distractor_moved
+                    else (
+                        "dropped"
+                        if dropped
+                        else "timeout" if self.steps >= self.max_steps else ""
+                    )
                 ),
                 "stable_steps": self.stable_steps,
             },

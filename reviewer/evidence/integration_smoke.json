@@ -1,60 +1,60 @@
 {
   "type": "integration_smoke_not_learning_validation",
-  "elapsed_seconds": 29.796869456011336,
+  "elapsed_seconds": 33.87981656799093,
   "matrix": [
     {
       "robot": "ur5e",
       "task": "cup_plate",
-      "rl_parameter_delta": 0.3160109519958496,
+      "rl_parameter_delta": 0.34660637378692627,
       "rl_steps": 64,
       "integration": true
     },
     {
       "robot": "ur5e",
       "task": "cup_shelf",
-      "rl_parameter_delta": 0.3347213566303253,
+      "rl_parameter_delta": 0.36548978090286255,
       "rl_steps": 64,
       "integration": true
     },
     {
       "robot": "ur5e",
-      "task": "swap",
-      "rl_parameter_delta": 0.3392944037914276,
+      "task": "cup_distractor",
+      "rl_parameter_delta": 0.3485884666442871,
       "rl_steps": 64,
       "integration": true
     },
     {
       "robot": "ur5e",
-      "task": "sort",
-      "rl_parameter_delta": 0.559992253780365,
+      "task": "color_match",
+      "rl_parameter_delta": 0.3396162688732147,
       "rl_steps": 64,
       "integration": true
     },
     {
       "robot": "iiwa14",
       "task": "cup_plate",
-      "rl_parameter_delta": 0.5341892242431641,
+      "rl_parameter_delta": 0.5157532691955566,
       "rl_steps": 64,
       "integration": true
     },
     {
       "robot": "iiwa14",
       "task": "cup_shelf",
-      "rl_parameter_delta": 0.4988742172718048,
+      "rl_parameter_delta": 0.5083763003349304,
       "rl_steps": 64,
       "integration": true
     },
     {
       "robot": "iiwa14",
-      "task": "swap",
-      "rl_parameter_delta": 0.5065127611160278,
+      "task": "cup_distractor",
+      "rl_parameter_delta": 0.4645666182041168,
       "rl_steps": 64,
       "integration": true
     },
     {
       "robot": "iiwa14",
-      "task": "sort",
-      "rl_parameter_delta": 0.5130022168159485,
+      "task": "color_match",
+      "rl_parameter_delta": 0.47805696725845337,
       "rl_steps": 64,
       "integration": true
     }

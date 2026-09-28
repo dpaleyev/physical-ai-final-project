@@ -8,7 +8,9 @@ def test_environment_is_implemented():
 
 
 @pytest.mark.parametrize("robot", ["ur5e", "iiwa14"])
-@pytest.mark.parametrize("task", ["cup_plate", "cup_shelf", "swap", "sort"])
+@pytest.mark.parametrize(
+    "task", ["cup_plate", "cup_shelf", "cup_distractor", "color_match"]
+)
 def test_reset_step_and_observation_contract(robot, task):
     from physical_ai.env import ManipulationEnv
 
@@ -38,7 +40,7 @@ def test_success_requires_release_stability_and_all_objects():
     from physical_ai.env import ManipulationEnv
     import mujoco
 
-    with ManipulationEnv("ur5e", "sort") as env:
+    with ManipulationEnv("ur5e", "cup_distractor") as env:
         env.reset(seed=5)
         for i, name in enumerate(env.object_names):
             adr = env.model.joint(name + "_free").qposadr[0]
@@ -56,7 +58,7 @@ def test_success_requires_release_stability_and_all_objects():
 def test_bc_observation_does_not_contain_object_state():
     from physical_ai.env import ManipulationEnv
 
-    with ManipulationEnv("iiwa14", "swap") as env:
+    with ManipulationEnv("iiwa14", "cup_distractor") as env:
         env.reset(seed=0)
         obs = env.bc_observation()
         assert set(obs) == {"rgb", "proprio"}
@@ -88,3 +90,39 @@ def test_fast_spinning_object_cannot_complete_placement():
         env.data.qvel[va + 3 : va + 6] = [0, 0, 2.0]
         mujoco.mj_forward(env.model, env.data)
         assert not env.placement_complete()
+
+
+def test_distractor_movement_fails_episode():
+    from physical_ai.env import ManipulationEnv
+    import mujoco
+
+    with ManipulationEnv("ur5e", "cup_distractor") as env:
+        adr = int(env.model.joint("cup1_free").qposadr[0])
+        env.data.qpos[adr] += 0.04
+        mujoco.mj_forward(env.model, env.data)
+        _, _, done, _, info = env.step([0, 0, 0, 1])
+        assert done and not info["is_success"]
+        assert info["failure"] == "distractor_moved"
+
+
+def test_color_match_varies_goal_and_preserves_semantic_pairing():
+    from physical_ai.env import ManipulationEnv
+
+    with ManipulationEnv("ur5e", "color_match") as env:
+        seen = set()
+        for seed in range(12):
+            env.reset(seed=seed)
+            assert env.object_names == ["cup0"]
+            color = env.model.geom("cup0_bottom").rgba
+            matching = [
+                i
+                for i in range(2)
+                if np.allclose(color, env.model.geom(f"plate{i}").rgba)
+            ]
+            assert len(matching) == 1
+            i = matching[0]
+            seen.add(i)
+            np.testing.assert_allclose(
+                env.goals[0], env.data.body(f"target{i}").xpos + [0, 0, 0.034]
+            )
+        assert seen == {0, 1}

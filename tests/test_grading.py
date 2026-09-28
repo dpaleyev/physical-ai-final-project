@@ -29,7 +29,7 @@ def test_advanced_scenarios_are_deterministic_and_physically_valid():
     import numpy as np
 
     for robot in ["ur5e", "iiwa14"]:
-        for task in ["cup_plate", "cup_shelf", "swap", "sort"]:
+        for task in ["cup_plate", "cup_shelf", "cup_distractor", "color_match"]:
             params = scenario(task, 714)
             assert params == scenario(task, 714) and params
             with ManipulationEnv(robot, task, parameters=params) as env:
@@ -57,9 +57,18 @@ def test_color_targets_follow_appearance_not_indices():
             "plate1": {"rgba": [0.8, 0.12, 0.12, 1]},
         }
     }
-    with ManipulationEnv("ur5e", "sort", parameters=params) as env:
-        assert abs(env.goals[0, 0] - 0.5) < 1e-8
-        assert abs(env.goals[1, 0] - 0.34) < 1e-8
+    with ManipulationEnv("ur5e", "color_match", parameters=params) as env:
+        for seed in range(8):
+            env.reset(seed=seed)
+            color = env.model.geom("cup0_bottom").rgba
+            match = next(
+                i
+                for i in range(2)
+                if np.allclose(color, env.model.geom(f"plate{i}").rgba)
+            )
+            np.testing.assert_allclose(
+                env.goals[0], env.data.body(f"target{match}").xpos + [0, 0, 0.034]
+            )
 
 
 def test_missing_model_artifacts_are_isolated_in_grading_report(tmp_path):
@@ -68,7 +77,7 @@ def test_missing_model_artifacts_are_isolated_in_grading_report(tmp_path):
 
     models = []
     for robot in ["ur5e", "iiwa14"]:
-        for task in ["cup_plate", "cup_shelf", "swap", "sort"]:
+        for task in ["cup_plate", "cup_shelf", "cup_distractor", "color_match"]:
             models.append(
                 dict(
                     robot=robot,

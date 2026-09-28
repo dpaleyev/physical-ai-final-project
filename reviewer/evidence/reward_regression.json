@@ -1,0 +1,17 @@
+{
+  "discount": 0.995,
+  "old_reward": {
+    "stall_return": 18.84469790063001,
+    "finish_return": 18.71008659114007
+  },
+  "corrected_reward": {
+    "stall": [
+      -23.247044772905106,
+      false
+    ],
+    "finish": [
+      46.02047761809302,
+      true
+    ]
+  }
+}

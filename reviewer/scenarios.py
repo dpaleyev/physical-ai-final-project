@@ -1,7 +1,6 @@
 """PRIVATE. Never distribute this module or its outputs to students."""
 
 import numpy as np
-from physical_ai.scenes import COLORS
 
 
 def scenario(task, seed):
@@ -20,35 +19,36 @@ def scenario(task, seed):
     if task == "cup_shelf":
         z = 0.554 + float(rng.choice([-1, 1]) * rng.uniform(0.02, 0.035))
         return {"body": {"target0": {"pos": [0.48, 0.17, z]}}}
-    if task == "swap":
+    if task == "cup_distractor":
         return {
             "body": {
-                f"cup{i}": {
+                "cup0": {
                     "pos": [
-                        0.43 + float(rng.uniform(-0.035, 0.035)),
-                        y + float(rng.uniform(-0.025, 0.025)),
+                        0.42 + float(rng.uniform(-0.025, 0.025)),
+                        -0.14 + float(rng.uniform(-0.02, 0.02)),
                         0.438,
                     ]
-                }
-                for i, y in enumerate([-0.16, 0.16])
+                },
+                "cup1": {
+                    "pos": [
+                        float(rng.uniform(0.60, 0.67)),
+                        float(rng.uniform(-0.025, 0.035)),
+                        0.438,
+                    ]
+                },
             }
         }
-    if task == "sort":
-        # Distinct new colors and different assignment to spatial slots.
-        palette = [[0.95, 0.58, 0.08, 1], [0.56, 0.15, 0.74, 1], [0.08, 0.72, 0.68, 1]]
-        order = rng.permutation(3)
-        if np.array_equal(order, np.arange(3)):
-            order = np.array([1, 2, 0])
+    if task == "color_match":
+        palette = np.array(
+            [[0.95, 0.58, 0.08, 1], [0.56, 0.15, 0.74, 1], [0.08, 0.72, 0.68, 1]]
+        )
+        colors = palette[rng.permutation(3)[:2]]
         geoms = {}
-        for i, color in enumerate(palette):
-            for suffix in (
-                ["bottom"]
-                + [f"wall{j}" for j in range(12)]
-                + [f"handle{j}" for j in range(3)]
-            ):
-                geoms[f"cup{i}_{suffix}"] = {"rgba": color}
-            geoms[f"plate{i}"] = {"rgba": palette[int(order[i])]}
+        for i, color in enumerate(colors):
+            geoms[f"plate{i}"] = {"rgba": color.tolist()}
             for j in range(20):
-                geoms[f"plate{i}_rim{j}"] = {"rgba": palette[int(order[i])]}
+                geoms[f"plate{i}_rim{j}"] = {"rgba": color.tolist()}
+        # The environment samples cup color from the current plate palette;
+        # its target is determined by visible equality, never by a fixed slot.
         return {"geom": geoms}
     raise ValueError(task)

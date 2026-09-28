@@ -60,3 +60,8 @@ Physical tasks must not use welded/teleported grasps. Color matching follows cur
 appearance, identity swap follows reset identity. BC receives no privileged state.
 Hidden configs never enter student export/history. Weak expert collection fails
 with a useful bounded error. Full training claims require full training evidence.
+
+## Approved scope adjustment
+The user authorized simplifying difficult tasks. Replace three-transfer swap with
+one-transfer cup_distractor and three-cup sorting with one-cup color_match.
+Update private advanced variants accordingly; do not disclose them in public docs.

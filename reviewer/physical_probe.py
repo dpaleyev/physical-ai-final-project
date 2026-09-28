@@ -46,14 +46,7 @@ def probe(robot, task, seed=0, video=None, parameters=None):
     with ManipulationEnv(robot, task, parameters=parameters, max_steps=1500) as env:
         env.reset(seed=seed)
         lifted = []
-        if task == "swap":
-            sequence = [
-                ("cup0", np.array([0.62, 0, 0.434])),
-                ("cup1", env.goals[1]),
-                ("cup0", env.goals[0]),
-            ]
-        else:
-            sequence = list(zip(env.object_names, env.goals))
+        sequence = [("cup0", env.goals[0])]
         for name, goal in sequence:
             height, info = transfer(env, name, goal, frames)
             lifted.append(height)

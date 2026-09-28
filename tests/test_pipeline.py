@@ -99,6 +99,16 @@ def test_resume_applies_requested_rollout_size_and_seed(tmp_path):
         n_envs=1,
         seed=0,
     )
+    import json
+    from physical_ai.rl import sha256
+    from physical_ai.env import DISCOUNT
+
+    checkpoint = tmp_path / "first/last.zip"
+    old, meta = load_rl(checkpoint, "ur5e", "cup_plate")
+    old.gamma = 0.9
+    old.save(checkpoint)
+    meta["sha256"] = sha256(checkpoint)
+    checkpoint.with_suffix(".json").write_text(json.dumps(meta))
     train(
         "ur5e",
         "cup_plate",
@@ -111,6 +121,8 @@ def test_resume_applies_requested_rollout_size_and_seed(tmp_path):
     )
     policy, meta = load_rl(tmp_path / "second/last.zip", "ur5e", "cup_plate")
     assert policy.n_steps == 16 and policy.seed == 17
+    assert policy.gamma == policy.rollout_buffer.gamma == DISCOUNT
+    assert meta["config"]["gamma"] == DISCOUNT
 
 
 def test_episode_batch_sampler_never_loses_or_duplicates_frames():
