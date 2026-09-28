@@ -1,0 +1,258 @@
+{
+  "description": "Bounded curriculum pilot after reward correction; independent evaluation, not full matrix convergence.",
+  "stages": [
+    {
+      "schema": 1,
+      "algorithm": "PPO",
+      "robot": "ur5e",
+      "task": "cup_plate",
+      "timesteps": 32768,
+      "parameter_delta_l2": 5.581895351409912,
+      "seed": 0,
+      "reward_stage": "reach",
+      "sha256": "11274935dd4ad0b9abc64f56c8c9bada193148b68db6ee357e516795277d84e5",
+      "config": {
+        "robot": "ur5e",
+        "task": "cup_plate",
+        "total_steps": 32768,
+        "n_steps": 256,
+        "n_envs": 8,
+        "seed": 0,
+        "learning_rate": 0.0003,
+        "ent_coef": 0.01,
+        "reward_stage": "reach",
+        "parameters": {},
+        "resume": null
+      }
+    },
+    {
+      "schema": 1,
+      "algorithm": "PPO",
+      "robot": "ur5e",
+      "task": "cup_plate",
+      "timesteps": 335872,
+      "parameter_delta_l2": 18.87276840209961,
+      "seed": 0,
+      "reward_stage": "lift",
+      "sha256": "23e172a6270a063965f2a6db65d1584fa1a0de4434b809f9c796d3b43b06e2a5",
+      "config": {
+        "robot": "ur5e",
+        "task": "cup_plate",
+        "total_steps": 300000,
+        "n_steps": 1024,
+        "n_envs": 8,
+        "seed": 0,
+        "learning_rate": 0.0003,
+        "ent_coef": 0.01,
+        "reward_stage": "lift",
+        "parameters": {},
+        "resume": "runs/pilot_reach/last.zip",
+        "gamma": 0.995,
+        "reward_version": 2,
+        "environment_sha256": "da6caff160d4bcf0ce5ee6f58d4f0edfafb1b48fbf9d62b43ea7395eba5b32e4"
+      }
+    },
+    {
+      "schema": 1,
+      "algorithm": "PPO",
+      "robot": "ur5e",
+      "task": "cup_plate",
+      "timesteps": 843776,
+      "parameter_delta_l2": 12.863755226135254,
+      "seed": 0,
+      "reward_stage": "place",
+      "sha256": "5a0b2e50395da6eb3138cb4e233e45e65e7141cb55cae580615e3bf21b0bd39b",
+      "config": {
+        "robot": "ur5e",
+        "task": "cup_plate",
+        "total_steps": 500000,
+        "n_steps": 1024,
+        "n_envs": 8,
+        "seed": 0,
+        "learning_rate": 0.0003,
+        "ent_coef": 0.01,
+        "reward_stage": "place",
+        "parameters": {},
+        "resume": "runs/pilot_lift_v2/last.zip",
+        "gamma": 0.995,
+        "reward_version": 2,
+        "environment_sha256": "da6caff160d4bcf0ce5ee6f58d4f0edfafb1b48fbf9d62b43ea7395eba5b32e4"
+      }
+    }
+  ],
+  "last_training_log": {
+    "time/fps": "1671",
+    "rollout/ep_rew_mean": "-22.85239397999999",
+    "rollout/ep_len_mean": "1000.0",
+    "time/iterations": "62",
+    "rollout/success_rate": "0.0",
+    "time/total_timesteps": "843776",
+    "time/time_elapsed": "303",
+    "train/entropy_loss": "-6.040852697193623",
+    "train/n_updates": "1140",
+    "train/loss": "-0.031161703169345856",
+    "train/explained_variance": "0.9759929180145264",
+    "train/policy_gradient_loss": "-0.0016976204395177774",
+    "train/clip_fraction": "0.133544921875",
+    "train/clip_range": "0.2",
+    "train/std": "1.1000745296478271",
+    "train/approx_kl": "0.008092813",
+    "train/learning_rate": "0.0003",
+    "train/value_loss": "0.13065911694429816"
+  },
+  "evaluation": {
+    "robot": "ur5e",
+    "task": "cup_plate",
+    "parameters": {},
+    "max_steps": 1000,
+    "success_rate": 0.0,
+    "successes": 0,
+    "n": 20,
+    "wilson_95": [
+      0.0,
+      0.16112515805281938
+    ],
+    "episodes": [
+      {
+        "seed": 62000,
+        "success": false,
+        "steps": 1000,
+        "reward": -38.70880372197042,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62001,
+        "success": false,
+        "steps": 1000,
+        "reward": -31.068191576351868,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62002,
+        "success": false,
+        "steps": 1000,
+        "reward": -33.31660341249227,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62003,
+        "success": false,
+        "steps": 1000,
+        "reward": -32.495317653673936,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62004,
+        "success": false,
+        "steps": 1000,
+        "reward": -32.236976274490665,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62005,
+        "success": false,
+        "steps": 1000,
+        "reward": -31.679490558868817,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62006,
+        "success": false,
+        "steps": 1000,
+        "reward": -33.48881817757458,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62007,
+        "success": false,
+        "steps": 1000,
+        "reward": -33.13836022559698,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62008,
+        "success": false,
+        "steps": 1000,
+        "reward": -31.86108283131115,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62009,
+        "success": false,
+        "steps": 1000,
+        "reward": -39.31483526653044,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62010,
+        "success": false,
+        "steps": 1000,
+        "reward": -33.657399131180696,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62011,
+        "success": false,
+        "steps": 1000,
+        "reward": -31.460184587973217,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62012,
+        "success": false,
+        "steps": 1000,
+        "reward": -29.461579219392267,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62013,
+        "success": false,
+        "steps": 1000,
+        "reward": -38.750315749482816,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62014,
+        "success": false,
+        "steps": 1000,
+        "reward": -32.66509421156986,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62015,
+        "success": false,
+        "steps": 1000,
+        "reward": -33.79345010644281,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62016,
+        "success": false,
+        "steps": 1000,
+        "reward": -37.4636356824168,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62017,
+        "success": false,
+        "steps": 1000,
+        "reward": -31.534315108578163,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62018,
+        "success": false,
+        "steps": 1000,
+        "reward": -30.21901327373741,
+        "failure": "timeout"
+      },
+      {
+        "seed": 62019,
+        "success": false,
+        "steps": 1000,
+        "reward": -36.653130224200545,
+        "failure": "timeout"
+      }
+    ]
+  }
+}
