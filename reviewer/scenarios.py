@@ -3,12 +3,17 @@
 import numpy as np
 
 
-def scenario(task, seed):
+def scenario(task, seed, robot="ur5e"):
+    if robot not in ("ur5e", "iiwa14"):
+        raise ValueError(robot)
     rng = np.random.default_rng(seed)
     if task == "cup_plate":
         # Change cup cross-section, retaining height/support conventions.
         sx, sy = float(rng.uniform(1.10, 1.18)), float(rng.uniform(0.87, 0.94))
-        geoms = {"cup0_bottom": {"size": [0.027 * min(sx, sy), 0.004]}}
+        geoms = {
+            "cup0_bottom": {"size": [0.027 * min(sx, sy), 0.004]},
+            "cup0_lid": {"size": [0.027 * max(sx, sy), 0.003]},
+        }
         for j in range(12):
             theta = 2 * np.pi * j / 12
             geoms[f"cup0_wall{j}"] = {
@@ -17,8 +22,21 @@ def scenario(task, seed):
             }
         return {"geom": geoms}
     if task == "cup_shelf":
-        z = 0.554 + float(rng.choice([-1, 1]) * rng.uniform(0.02, 0.035))
-        return {"body": {"target0": {"pos": [0.48, 0.17, z]}}}
+        base, bounds = (
+            (0.454, (0.01, 0.02)) if robot == "iiwa14" else (0.554, (0.02, 0.035))
+        )
+        z = base + float(rng.choice([-1, 1]) * rng.uniform(*bounds))
+        half_leg = (z - 0.43) / 2
+        return {
+            "body": {"target0": {"pos": [0.48, 0.17, z]}},
+            "geom": {
+                f"shelf_leg_{side}": {
+                    "size": [0.012, 0.075, half_leg],
+                    "pos": [side * 0.115, 0, -0.03 - half_leg],
+                }
+                for side in [-1, 1]
+            },
+        }
     if task == "cup_distractor":
         return {
             "body": {

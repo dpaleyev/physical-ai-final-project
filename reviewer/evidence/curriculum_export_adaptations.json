@@ -1,0 +1,46 @@
+[
+  {
+    "checkpoint_sha256": "901e91f34aca44ec8bedfa420e8660e25847bab33437c6b2df690bcecc25e7da",
+    "robot": "iiwa14",
+    "task": "cup_shelf",
+    "original_parameters": {
+      "body": {
+        "target0": {
+          "pos": [
+            0.48,
+            0.17,
+            0.454
+          ]
+        }
+      },
+      "geom": {
+        "shelf_leg_-1": {
+          "size": [
+            0.012,
+            0.075,
+            0.012
+          ],
+          "pos": [
+            -0.115,
+            0,
+            -0.042
+          ]
+        },
+        "shelf_leg_1": {
+          "size": [
+            0.012,
+            0.075,
+            0.012
+          ],
+          "pos": [
+            0.115,
+            0,
+            -0.042
+          ]
+        }
+      }
+    },
+    "compiled_model_sha256": "67dd0ad8d45c8af990f7158727333f37ba111b1f1a7d69a116fc3f05fad30080",
+    "reason": "Overrides equal the current default compiled model"
+  }
+]

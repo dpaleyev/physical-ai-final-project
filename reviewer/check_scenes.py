@@ -4,6 +4,7 @@ import argparse
 import json
 from pathlib import Path
 from physical_ai.scenes import ROBOTS, TASKS
+from physical_ai.env import RUNTIME_PROVENANCE
 from reviewer.physical_probe import probe
 from reviewer.scenarios import scenario
 
@@ -24,7 +25,10 @@ def main():
                 rows.append(row)
             for scenario_seed, episode_seed in [(739, 0), (113, 7), (914, 12)]:
                 row = probe(
-                    robot, task, episode_seed, parameters=scenario(task, scenario_seed)
+                    robot,
+                    task,
+                    episode_seed,
+                    parameters=scenario(task, scenario_seed, robot=robot),
                 )
                 row.update(split="advanced", scenario_seed=scenario_seed)
                 rows.append(row)
@@ -35,6 +39,8 @@ def main():
                 flush=True,
             )
     path.parent.mkdir(parents=True, exist_ok=True)
+    for row in rows:
+        row["runtime_provenance"] = dict(RUNTIME_PROVENANCE)
     path.write_text(json.dumps(rows, indent=2))
     if not all(row["success"] and row["steps"] <= 1000 for row in rows):
         raise SystemExit(1)

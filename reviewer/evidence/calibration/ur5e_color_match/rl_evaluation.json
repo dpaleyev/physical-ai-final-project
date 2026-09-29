@@ -1,0 +1,438 @@
+{
+  "robot": "ur5e",
+  "task": "color_match",
+  "parameters": {},
+  "max_steps": 1000,
+  "success_rate": 1.0,
+  "successes": 50,
+  "n": 50,
+  "wilson_95": [
+    0.9286524008666414,
+    1.0
+  ],
+  "episodes": [
+    {
+      "seed": 100000,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 95.94891728367455,
+      "failure": ""
+    },
+    {
+      "seed": 100001,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 48,
+      "reward": 95.7402941945936,
+      "failure": ""
+    },
+    {
+      "seed": 100002,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 95.97699915147864,
+      "failure": ""
+    },
+    {
+      "seed": 100003,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 49,
+      "reward": 95.70404636459259,
+      "failure": ""
+    },
+    {
+      "seed": 100004,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 49,
+      "reward": 95.74111723742945,
+      "failure": ""
+    },
+    {
+      "seed": 100005,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 96.09886212348674,
+      "failure": ""
+    },
+    {
+      "seed": 100006,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 48,
+      "reward": 95.87827715117524,
+      "failure": ""
+    },
+    {
+      "seed": 100007,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 48,
+      "reward": 95.8740411480523,
+      "failure": ""
+    },
+    {
+      "seed": 100008,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 48,
+      "reward": 95.86744840484184,
+      "failure": ""
+    },
+    {
+      "seed": 100009,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 96.09962645257606,
+      "failure": ""
+    },
+    {
+      "seed": 100010,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 49,
+      "reward": 95.72316996626864,
+      "failure": ""
+    },
+    {
+      "seed": 100011,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 95.94782736926354,
+      "failure": ""
+    },
+    {
+      "seed": 100012,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 50,
+      "reward": 95.67817538753624,
+      "failure": ""
+    },
+    {
+      "seed": 100013,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 96.13752599659037,
+      "failure": ""
+    },
+    {
+      "seed": 100014,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 48,
+      "reward": 95.89871429413266,
+      "failure": ""
+    },
+    {
+      "seed": 100015,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 48,
+      "reward": 95.85021819712156,
+      "failure": ""
+    },
+    {
+      "seed": 100016,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 48,
+      "reward": 95.81866772793927,
+      "failure": ""
+    },
+    {
+      "seed": 100017,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 96.12272517869212,
+      "failure": ""
+    },
+    {
+      "seed": 100018,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 96.12736691954507,
+      "failure": ""
+    },
+    {
+      "seed": 100019,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 95.93554989144783,
+      "failure": ""
+    },
+    {
+      "seed": 100020,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 95.9042209104242,
+      "failure": ""
+    },
+    {
+      "seed": 100021,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 48,
+      "reward": 95.90142227704712,
+      "failure": ""
+    },
+    {
+      "seed": 100022,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 96.1028743994095,
+      "failure": ""
+    },
+    {
+      "seed": 100023,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 95.94765502422968,
+      "failure": ""
+    },
+    {
+      "seed": 100024,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 96.11332139139515,
+      "failure": ""
+    },
+    {
+      "seed": 100025,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 96.07162751048335,
+      "failure": ""
+    },
+    {
+      "seed": 100026,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 95.9682694450757,
+      "failure": ""
+    },
+    {
+      "seed": 100027,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 49,
+      "reward": 95.8261611177627,
+      "failure": ""
+    },
+    {
+      "seed": 100028,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 49,
+      "reward": 95.79474094414617,
+      "failure": ""
+    },
+    {
+      "seed": 100029,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 95.93927347242204,
+      "failure": ""
+    },
+    {
+      "seed": 100030,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 95.93706493059787,
+      "failure": ""
+    },
+    {
+      "seed": 100031,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 49,
+      "reward": 95.76255577706877,
+      "failure": ""
+    },
+    {
+      "seed": 100032,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 96.12040046338663,
+      "failure": ""
+    },
+    {
+      "seed": 100033,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 49,
+      "reward": 95.76398738662672,
+      "failure": ""
+    },
+    {
+      "seed": 100034,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 96.10092504427006,
+      "failure": ""
+    },
+    {
+      "seed": 100035,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 49,
+      "reward": 95.76108903369266,
+      "failure": ""
+    },
+    {
+      "seed": 100036,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 95.92913772355274,
+      "failure": ""
+    },
+    {
+      "seed": 100037,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 95.96889358646126,
+      "failure": ""
+    },
+    {
+      "seed": 100038,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 96.1379323586252,
+      "failure": ""
+    },
+    {
+      "seed": 100039,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 49,
+      "reward": 95.7953244984057,
+      "failure": ""
+    },
+    {
+      "seed": 100040,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 96.17229716441224,
+      "failure": ""
+    },
+    {
+      "seed": 100041,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 96.11995264719587,
+      "failure": ""
+    },
+    {
+      "seed": 100042,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 95.90590434739988,
+      "failure": ""
+    },
+    {
+      "seed": 100043,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 96.13358259931867,
+      "failure": ""
+    },
+    {
+      "seed": 100044,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 49,
+      "reward": 95.87603059327857,
+      "failure": ""
+    },
+    {
+      "seed": 100045,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 95.94794879052603,
+      "failure": ""
+    },
+    {
+      "seed": 100046,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 46,
+      "reward": 95.88966414081005,
+      "failure": ""
+    },
+    {
+      "seed": 100047,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 95.9236996905081,
+      "failure": ""
+    },
+    {
+      "seed": 100048,
+      "goal_slot": 0,
+      "success": true,
+      "steps": 47,
+      "reward": 96.00896214607485,
+      "failure": ""
+    },
+    {
+      "seed": 100049,
+      "goal_slot": 1,
+      "success": true,
+      "steps": 48,
+      "reward": 95.89222312456025,
+      "failure": ""
+    }
+  ],
+  "by_goal_slot": {
+    "0": {
+      "n": 30,
+      "successes": 30,
+      "success_rate": 1.0
+    },
+    "1": {
+      "n": 20,
+      "successes": 20,
+      "success_rate": 1.0
+    }
+  },
+  "runtime_provenance": {
+    "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+    "scenes_sha256": "b95f6c6f19060386f879b38de02f2f24dc56f5bbf365d922f99b6ac2937001ac",
+    "mujoco_version": "3.3.7",
+    "reward_version": 3,
+    "success_version": 2
+  },
+  "checkpoint": "runs/calibration/ur5e_color_sde/phase_0_attempt_0/last.zip",
+  "checkpoint_sha256": "db31f693cbf9937fd7dc048acdc78224c2808cbb08f964d7e506bf77bd77739a",
+  "reset_distribution": "ordinary_ManipulationEnv_no_curriculum",
+  "purpose": "independent_base_quality_gate"
+}

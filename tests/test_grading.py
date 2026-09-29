@@ -30,8 +30,8 @@ def test_advanced_scenarios_are_deterministic_and_physically_valid():
 
     for robot in ["ur5e", "iiwa14"]:
         for task in ["cup_plate", "cup_shelf", "cup_distractor", "color_match"]:
-            params = scenario(task, 714)
-            assert params == scenario(task, 714) and params
+            params = scenario(task, 714, robot=robot)
+            assert params == scenario(task, 714, robot=robot) and params
             with ManipulationEnv(robot, task, parameters=params) as env:
                 state, _ = env.reset(seed=12)
                 assert np.isfinite(state).all() and not env.success()
@@ -97,3 +97,24 @@ def test_missing_model_artifacts_are_isolated_in_grading_report(tmp_path):
     )
     assert len(results) == 64 and all("error" in row for row in results)
     assert (tmp_path / "out/results.json").is_file()
+
+
+def test_public_recipe_removes_only_model_equivalent_parameters():
+    from reviewer.export_curriculum import public_parameters
+
+    params = {"body": {"target0": {"pos": [0.48, 0.17, 0.454]}}}
+    options, digest = public_parameters("iiwa14", "cup_shelf", params)
+    assert options == {} and len(digest) == 64
+    with pytest.raises(ValueError, match="different"):
+        public_parameters(
+            "iiwa14", "cup_shelf", {"body": {"target0": {"pos": [0.48, 0.17, 0.6]}}}
+        )
+
+
+def test_public_recipe_has_no_task_specific_parameter_overrides():
+    import json
+
+    recipe = json.loads(
+        (Path(__file__).parents[1] / "configs/ppo_calibrated.json").read_text()
+    )
+    assert all(not node["train"].get("parameters") for node in recipe["stages"])

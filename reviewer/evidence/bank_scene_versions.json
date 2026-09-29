@@ -1,0 +1,12 @@
+{
+  "b95f6c6f19060386f879b38de02f2f24dc56f5bbf365d922f99b6ac2937001ac": {
+    "ur5e/cup_plate": "e8bb290a3e64cced1cbd44ce4a5d3e6d4bd4edaaefa2824b8ea391b234c6e03f",
+    "ur5e/cup_shelf": "d0be2012f198b543ae4a945babb6adb864fd87670ada08dc1ce7f7c30c50077b",
+    "ur5e/cup_distractor": "e2f6290ffb1bb15cb2af1e8babba9e1aebf536f847248ce0af4da2a2c4d8ca9b",
+    "ur5e/color_match": "f96846f5742429ccec3ecf334bab0b38f1abbce9164949540854ffdb386bba0a",
+    "iiwa14/cup_plate": "5fe0bf28ce9c463fdced92c3f94e7f232a51e632d255e09697441856628cdba8",
+    "iiwa14/cup_shelf": "25fb3416a7bd7f0c8fef5810b14c8a13a0da3fc6f47e67dd6def3d74d1a5dba8",
+    "iiwa14/cup_distractor": "21fc806ed67e4e2cb53171380691d81fc7bcd562a4f691072cb53312e2b54144",
+    "iiwa14/color_match": "e20a925d7d1b4838df20d1e3e7a0ea24ce2d4dd672bdc126e65a45e05185245c"
+  }
+}

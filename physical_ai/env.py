@@ -1,6 +1,8 @@
 """One MuJoCo environment for RL, demonstrations and evaluation."""
 
 import os
+import hashlib
+from pathlib import Path
 
 if not os.environ.get("DISPLAY"):
     os.environ.setdefault("MUJOCO_GL", "osmesa")
@@ -11,7 +13,18 @@ from gymnasium import spaces
 from physical_ai.scenes import ROBOTS, build_scene
 
 DISCOUNT = 0.995
-REWARD_VERSION = 2
+REWARD_VERSION = 3
+SUCCESS_VERSION = 2
+# Captured once at import, so later edits cannot relabel a running rollout.
+RUNTIME_PROVENANCE = {
+    "environment_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+    "scenes_sha256": hashlib.sha256(
+        Path(__file__).with_name("scenes.py").read_bytes()
+    ).hexdigest(),
+    "mujoco_version": mujoco.__version__,
+    "reward_version": REWARD_VERSION,
+    "success_version": SUCCESS_VERSION,
+}
 
 
 class ManipulationEnv(gym.Env):
@@ -172,13 +185,18 @@ class ManipulationEnv(gym.Env):
             return False
         for i, name in enumerate(self.object_names):
             b = self.data.body(name)
-            if np.linalg.norm(b.xpos[:2] - self.goals[i, :2]) > 0.035:
+            xy_tolerance = 0.02 if self.task == "cup_distractor" and i == 1 else 0.035
+            if np.linalg.norm(b.xpos[:2] - self.goals[i, :2]) > xy_tolerance:
                 return False
             if (
                 abs(b.xpos[2] - self.goals[i, 2]) > 0.012
                 or b.xmat.reshape(3, 3)[2, 2] < 0.92
             ):
                 return False
+            # The neighbor must retain its pose throughout the episode; release
+            # and settling criteria apply to the cup that the robot transfers.
+            if self.task == "cup_distractor" and i == 1:
+                continue
             vel = np.zeros(6)
             mujoco.mj_objectVelocity(
                 self.model, self.data, mujoco.mjtObj.mjOBJ_BODY, b.id, vel, 0
@@ -200,13 +218,19 @@ class ManipulationEnv(gym.Env):
             reach = 1 - np.tanh(8 * np.linalg.norm(ee - p))
             lift = np.clip((p[2] - 0.435) / 0.12, 0, 1)
             place = 1 - np.tanh(7 * np.linalg.norm(p - self.goals[i]))
+            near_goal = np.exp(-np.square(np.linalg.norm(p - self.goals[i]) / 0.055))
+            opening = np.clip(
+                (np.min(self.data.qpos[self.jaw_q]) - 0.025) / 0.018, 0, 1
+            )
+            retreat = np.clip((ee[2] - p[2] - 0.025) / 0.125, 0, 1)
+            release = 6 * near_goal * (0.5 * opening + 0.5 * opening * retreat)
             terms.append(
                 reach
                 if self.reward_stage == "reach"
                 else (
                     reach + 2 * lift
                     if self.reward_stage == "lift"
-                    else reach + 2 * lift + 4 * place
+                    else reach + 2 * lift + 4 * place + release
                 )
             )
         return float(sum(terms))

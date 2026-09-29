@@ -1,0 +1,13 @@
+{
+  "unchanged_scene_fingerprints": [
+    "ur5e/cup_plate",
+    "ur5e/cup_shelf",
+    "ur5e/cup_distractor",
+    "ur5e/color_match",
+    "iiwa14/cup_plate",
+    "iiwa14/cup_distractor",
+    "iiwa14/color_match"
+  ],
+  "new_platform_compiled_model_sha256": "67dd0ad8d45c8af990f7158727333f37ba111b1f1a7d69a116fc3f05fad30080",
+  "identical_to_tested_parameterized_model": true
+}

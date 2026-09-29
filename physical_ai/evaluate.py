@@ -7,7 +7,7 @@ import math
 from pathlib import Path
 import numpy as np
 import torch
-from physical_ai.env import ManipulationEnv
+from physical_ai.env import ManipulationEnv, RUNTIME_PROVENANCE
 
 
 def wilson_interval(successes, n):
@@ -78,6 +78,19 @@ def evaluate(
     ) as env:
         for seed in seeds:
             state, _ = env.reset(seed=int(seed))
+            goal_slot = 0
+            if task == "color_match":
+                goal_slot = int(
+                    np.argmin(
+                        [
+                            np.linalg.norm(
+                                env.goals[0]
+                                - (env.data.body(f"target{i}").xpos + [0, 0, 0.034])
+                            )
+                            for i in range(2)
+                        ]
+                    )
+                )
             frames = []
             total_reward = 0
             if hasattr(policy, "reset"):
@@ -95,6 +108,7 @@ def evaluate(
             rows.append(
                 dict(
                     seed=int(seed),
+                    goal_slot=goal_slot,
                     success=bool(info["is_success"]),
                     steps=step + 1,
                     reward=total_reward,
@@ -109,6 +123,13 @@ def evaluate(
                 dest.mkdir(parents=True, exist_ok=True)
                 imageio.mimsave(dest / f"{robot}_{task}_{seed}.mp4", frames, fps=20)
     successes = sum(r["success"] for r in rows)
+    by_goal_slot = {}
+    for slot in sorted({row["goal_slot"] for row in rows}):
+        group = [row for row in rows if row["goal_slot"] == slot]
+        count = sum(row["success"] for row in group)
+        by_goal_slot[str(slot)] = dict(
+            n=len(group), successes=count, success_rate=count / len(group)
+        )
     return dict(
         robot=robot,
         task=task,
@@ -119,6 +140,8 @@ def evaluate(
         n=len(rows),
         wilson_95=wilson_interval(successes, len(rows)),
         episodes=rows,
+        by_goal_slot=by_goal_slot,
+        runtime_provenance=dict(RUNTIME_PROVENANCE),
     )
 
 
@@ -157,6 +180,7 @@ def main():
     )
     result["checkpoint"] = str(a.checkpoint)
     result["kind"] = a.kind
+    result["checkpoint_sha256"] = meta["sha256"]
     save_result(result, a.out)
     print(json.dumps({k: v for k, v in result.items() if k != "episodes"}, indent=2))
 

@@ -1,0 +1,1682 @@
+[
+  {
+    "robot": "ur5e",
+    "task": "cup_plate",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.6355818852110224
+    ],
+    "steps": 258,
+    "positions": [
+      [
+        0.4800791642107239,
+        0.158130993338046,
+        0.4460289837509685
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_plate",
+    "seed": 1,
+    "success": true,
+    "lifted_z": [
+      0.6355245676888268
+    ],
+    "steps": 257,
+    "positions": [
+      [
+        0.4800464525813436,
+        0.15815992486960415,
+        0.4460304533228883
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_plate",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6355781104200028
+    ],
+    "steps": 257,
+    "positions": [
+      [
+        0.48005708837604055,
+        0.15822598359559886,
+        0.44603828013526653
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_plate",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.630387068972145
+    ],
+    "steps": 257,
+    "positions": [
+      [
+        0.4818143457637466,
+        0.158091818076115,
+        0.446320164041151
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 739,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_plate",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6304050031482137
+    ],
+    "steps": 256,
+    "positions": [
+      [
+        0.48183028285549445,
+        0.1580248301109977,
+        0.44642656303111616
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 113,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_plate",
+    "seed": 12,
+    "success": true,
+    "lifted_z": [
+      0.6303070148787124
+    ],
+    "steps": 256,
+    "positions": [
+      [
+        0.4818251825852575,
+        0.1580036907439735,
+        0.44644361444786157
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 914,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_shelf",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.7490662065865168
+    ],
+    "steps": 279,
+    "positions": [
+      [
+        0.4800076396412983,
+        0.16890224963478584,
+        0.5860428852741795
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.17,
+        0.5880000000000001
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_shelf",
+    "seed": 1,
+    "success": true,
+    "lifted_z": [
+      0.7490001760049867
+    ],
+    "steps": 278,
+    "positions": [
+      [
+        0.4800507306874811,
+        0.16891254039785694,
+        0.5860637817713767
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.17,
+        0.5880000000000001
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_shelf",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.7490628761598865
+    ],
+    "steps": 278,
+    "positions": [
+      [
+        0.4799905432838425,
+        0.16891620473744903,
+        0.5860380633736937
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.17,
+        0.5880000000000001
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_shelf",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.7800195392034976
+    ],
+    "steps": 287,
+    "positions": [
+      [
+        0.47998367619944166,
+        0.16945958607151043,
+        0.6170186062914665
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.17,
+        0.61895393
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 739,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_shelf",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.727742195469188
+    ],
+    "steps": 274,
+    "positions": [
+      [
+        0.4799436492146955,
+        0.16860504799032253,
+        0.5637894584703174
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.17,
+        0.56573697
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 113,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_shelf",
+    "seed": 12,
+    "success": true,
+    "lifted_z": [
+      0.7707912133842758
+    ],
+    "steps": 284,
+    "positions": [
+      [
+        0.4800334159074706,
+        0.16901256046923402,
+        0.60759205629604
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.17,
+        0.60955382
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 914,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_distractor",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.6355818852110308
+    ],
+    "steps": 258,
+    "positions": [
+      [
+        0.4800791642106975,
+        0.15813099333804215,
+        0.4460289837510026
+      ],
+      [
+        0.6314492684178232,
+        -0.007542750243651579,
+        0.4320212216566036
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ],
+      [
+        0.6226555763829791,
+        -0.007735557831543534,
+        0.438
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_distractor",
+    "seed": 1,
+    "success": true,
+    "lifted_z": [
+      0.6355192454820275
+    ],
+    "steps": 257,
+    "positions": [
+      [
+        0.4800327262663152,
+        0.15817562283026493,
+        0.446038150849025
+      ],
+      [
+        0.6335231135821204,
+        0.010196074925326447,
+        0.4321156216380163
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ],
+      [
+        0.6243065538035142,
+        0.007178391154195902,
+        0.438
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_distractor",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6355781104209836
+    ],
+    "steps": 257,
+    "positions": [
+      [
+        0.4800570883746757,
+        0.1582259835943045,
+        0.4460382801369857
+      ],
+      [
+        0.6436296198228726,
+        -0.0036841891255894434,
+        0.43202014441438374
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ],
+      [
+        0.6344109710439231,
+        -0.00439668496015053,
+        0.438
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_distractor",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.6355401391147661
+    ],
+    "steps": 257,
+    "positions": [
+      [
+        0.4799999053886378,
+        0.1579331986827721,
+        0.446043867947173
+      ],
+      [
+        0.6211956703791593,
+        0.02471660617992543,
+        0.43210743136784263
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ],
+      [
+        0.6120718763829791,
+        0.021539824168456463,
+        0.438
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 739,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_distractor",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6355207435976666
+    ],
+    "steps": 258,
+    "positions": [
+      [
+        0.4799690466804363,
+        0.15772491070800224,
+        0.44603634901732536
+      ],
+      [
+        0.6241855595400301,
+        0.008158025571968871,
+        0.43203113135168153
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ],
+      [
+        0.6145443610439231,
+        0.007232917039849469,
+        0.438
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 113,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "cup_distractor",
+    "seed": 12,
+    "success": true,
+    "lifted_z": [
+      0.6356123583069212
+    ],
+    "steps": 258,
+    "positions": [
+      [
+        0.4800771759637944,
+        0.15793268687332976,
+        0.44602914968681295
+      ],
+      [
+        0.630022251214525,
+        0.0013076801351200045,
+        0.4320227937816533
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ],
+      [
+        0.6205965061526362,
+        5.941576668972142e-05,
+        0.438
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 914,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "color_match",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.6356747522467499
+    ],
+    "steps": 257,
+    "positions": [
+      [
+        0.3711859912069312,
+        0.15807743174958278,
+        0.44603671470741524
+      ]
+    ],
+    "goals": [
+      [
+        0.37,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "color_match",
+    "seed": 1,
+    "success": true,
+    "lifted_z": [
+      0.6357025605734461
+    ],
+    "steps": 256,
+    "positions": [
+      [
+        0.37114680731415756,
+        0.1580684128710534,
+        0.44604184306474315
+      ]
+    ],
+    "goals": [
+      [
+        0.37,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "color_match",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6356158185261751
+    ],
+    "steps": 257,
+    "positions": [
+      [
+        0.6095904042529269,
+        0.15800129849127886,
+        0.44602709627357484
+      ]
+    ],
+    "goals": [
+      [
+        0.61,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "color_match",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.6356747522467499
+    ],
+    "steps": 257,
+    "positions": [
+      [
+        0.3711859912069312,
+        0.15807743174958278,
+        0.44603671470741524
+      ]
+    ],
+    "goals": [
+      [
+        0.37,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 739,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "color_match",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6356158185261751
+    ],
+    "steps": 257,
+    "positions": [
+      [
+        0.6095904042529269,
+        0.15800129849127886,
+        0.44602709627357484
+      ]
+    ],
+    "goals": [
+      [
+        0.61,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 113,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "ur5e",
+    "task": "color_match",
+    "seed": 12,
+    "success": true,
+    "lifted_z": [
+      0.635624678251867
+    ],
+    "steps": 256,
+    "positions": [
+      [
+        0.37117707209245077,
+        0.1581748521091519,
+        0.4460641315879909
+      ]
+    ],
+    "goals": [
+      [
+        0.37,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 914,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_plate",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.6374650706731032
+    ],
+    "steps": 258,
+    "positions": [
+      [
+        0.4823673174550376,
+        0.15318651557765584,
+        0.44605644793257065
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_plate",
+    "seed": 1,
+    "success": true,
+    "lifted_z": [
+      0.6374867949980491
+    ],
+    "steps": 263,
+    "positions": [
+      [
+        0.4830452773776921,
+        0.15331870129910916,
+        0.44605593019416795
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_plate",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6374549232634499
+    ],
+    "steps": 263,
+    "positions": [
+      [
+        0.48283073731495063,
+        0.15324390753294426,
+        0.4460588885657534
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_plate",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.632022025099737
+    ],
+    "steps": 256,
+    "positions": [
+      [
+        0.4822279683487012,
+        0.1535351912071545,
+        0.4463087795385255
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 739,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_plate",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6319360219786287
+    ],
+    "steps": 255,
+    "positions": [
+      [
+        0.48239850330495593,
+        0.15348523504911984,
+        0.4464279382453437
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 113,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_plate",
+    "seed": 12,
+    "success": true,
+    "lifted_z": [
+      0.6318643125328914
+    ],
+    "steps": 255,
+    "positions": [
+      [
+        0.4821797511150338,
+        0.15395361055092746,
+        0.4464376351395484
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 914,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_shelf",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.6553901014320958
+    ],
+    "steps": 259,
+    "positions": [
+      [
+        0.48258761979392545,
+        0.1636056823144893,
+        0.4860322507755513
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.17,
+        0.488
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_shelf",
+    "seed": 1,
+    "success": true,
+    "lifted_z": [
+      0.6554048077789218
+    ],
+    "steps": 275,
+    "positions": [
+      [
+        0.4826325852562657,
+        0.16338192139608818,
+        0.4860563212915473
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.17,
+        0.488
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_shelf",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6553859217691786
+    ],
+    "steps": 269,
+    "positions": [
+      [
+        0.48255141188307243,
+        0.16346634301919133,
+        0.4860537940571726
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.17,
+        0.488
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_shelf",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.6725481105028918
+    ],
+    "steps": 271,
+    "positions": [
+      [
+        0.4826454367134156,
+        0.16347053618995291,
+        0.5033481385583896
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.17,
+        0.50530262
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 739,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_shelf",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6439237659788039
+    ],
+    "steps": 257,
+    "positions": [
+      [
+        0.4826827429621846,
+        0.16367723324688702,
+        0.4745386324426733
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.17,
+        0.47649131
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 113,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_shelf",
+    "seed": 12,
+    "success": true,
+    "lifted_z": [
+      0.6664841310788251
+    ],
+    "steps": 260,
+    "positions": [
+      [
+        0.48256530111442625,
+        0.1637160125834537,
+        0.49709938293662853
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.17,
+        0.49903588
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 914,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_distractor",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.6374650706762449
+    ],
+    "steps": 258,
+    "positions": [
+      [
+        0.48236731745229433,
+        0.15318651557770083,
+        0.4460564479325754
+      ],
+      [
+        0.631441644753525,
+        -0.007507584162080026,
+        0.4320214602909502
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ],
+      [
+        0.6226555763829791,
+        -0.007735557831543534,
+        0.438
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_distractor",
+    "seed": 1,
+    "success": true,
+    "lifted_z": [
+      0.6374644988057632
+    ],
+    "steps": 261,
+    "positions": [
+      [
+        0.483082897486896,
+        0.15328048325573942,
+        0.4460577608068172
+      ],
+      [
+        0.6338948911341118,
+        0.007677807239417761,
+        0.432033896293418
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ],
+      [
+        0.6243065538035142,
+        0.007178391154195902,
+        0.438
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_distractor",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6374549232634519
+    ],
+    "steps": 263,
+    "positions": [
+      [
+        0.48283073731494985,
+        0.15324390753294512,
+        0.4460588885657546
+      ],
+      [
+        0.6438440742450272,
+        -0.003633759829826626,
+        0.4320203030105329
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ],
+      [
+        0.6344109710439231,
+        -0.00439668496015053,
+        0.438
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_distractor",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.6374453757645128
+    ],
+    "steps": 263,
+    "positions": [
+      [
+        0.48258341252508424,
+        0.15319645749856,
+        0.446058171874661
+      ],
+      [
+        0.6213802504633555,
+        0.024567941912441094,
+        0.43210906862321585
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ],
+      [
+        0.6120718763829791,
+        0.021539824168456463,
+        0.438
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 739,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_distractor",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6375062211337938
+    ],
+    "steps": 260,
+    "positions": [
+      [
+        0.482546641086984,
+        0.15317400006714216,
+        0.4460616401508784
+      ],
+      [
+        0.6242685844141782,
+        0.008167742482336057,
+        0.43203094962870003
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ],
+      [
+        0.6145443610439231,
+        0.007232917039849469,
+        0.438
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 113,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "cup_distractor",
+    "seed": 12,
+    "success": true,
+    "lifted_z": [
+      0.6374412147099645
+    ],
+    "steps": 264,
+    "positions": [
+      [
+        0.482729403254537,
+        0.15317330487651504,
+        0.4460542502120696
+      ],
+      [
+        0.6302531917287284,
+        0.0013668742407044962,
+        0.4320223605728379
+      ]
+    ],
+    "goals": [
+      [
+        0.48,
+        0.16,
+        0.44799999999999995
+      ],
+      [
+        0.6205965061526362,
+        5.941576668972142e-05,
+        0.438
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 914,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "color_match",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.6373985057466894
+    ],
+    "steps": 281,
+    "positions": [
+      [
+        0.3782713908565669,
+        0.15885044378073787,
+        0.4460511361385636
+      ]
+    ],
+    "goals": [
+      [
+        0.37,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "color_match",
+    "seed": 1,
+    "success": true,
+    "lifted_z": [
+      0.6373866381497459
+    ],
+    "steps": 280,
+    "positions": [
+      [
+        0.3783553165001528,
+        0.15936892443368997,
+        0.4460607566951413
+      ]
+    ],
+    "goals": [
+      [
+        0.37,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "color_match",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6373707830256498
+    ],
+    "steps": 256,
+    "positions": [
+      [
+        0.6108272374347127,
+        0.15397776044445882,
+        0.44604364392536144
+      ]
+    ],
+    "goals": [
+      [
+        0.61,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "base",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "color_match",
+    "seed": 0,
+    "success": true,
+    "lifted_z": [
+      0.6373985057466894
+    ],
+    "steps": 281,
+    "positions": [
+      [
+        0.3782713908565669,
+        0.15885044378073787,
+        0.4460511361385636
+      ]
+    ],
+    "goals": [
+      [
+        0.37,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 739,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "color_match",
+    "seed": 7,
+    "success": true,
+    "lifted_z": [
+      0.6373707830256498
+    ],
+    "steps": 256,
+    "positions": [
+      [
+        0.6108272374347127,
+        0.15397776044445882,
+        0.44604364392536144
+      ]
+    ],
+    "goals": [
+      [
+        0.61,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 113,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  },
+  {
+    "robot": "iiwa14",
+    "task": "color_match",
+    "seed": 12,
+    "success": true,
+    "lifted_z": [
+      0.6373773442579761
+    ],
+    "steps": 275,
+    "positions": [
+      [
+        0.37812471413242266,
+        0.15929263226801715,
+        0.4460622154123734
+      ]
+    ],
+    "goals": [
+      [
+        0.37,
+        0.16,
+        0.44799999999999995
+      ]
+    ],
+    "split": "advanced",
+    "scenario_seed": 914,
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    }
+  }
+]

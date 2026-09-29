@@ -138,6 +138,7 @@
     <body name="cup0" pos="0.46 -0.14 0.438">
       <freejoint name="cup0_free" />
       <geom name="cup0_bottom" type="cylinder" size=".027 .004" pos="0 0 -.03" mass=".03" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
+      <geom name="cup0_lid" type="cylinder" size=".027 .003" pos="0 0 .032" mass=".006" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
       <geom name="cup0_wall0" type="box" size=".004 .008 .032" pos="0.026 0 0" euler="0 0 0.0" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
       <geom name="cup0_wall1" type="box" size=".004 .008 .032" pos="0.02251666 0.013 0" euler="0 0 0.5235987755982988" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />
       <geom name="cup0_wall2" type="box" size=".004 .008 .032" pos="0.013 0.02251666 0" euler="0 0 1.0471975511965976" mass=".004" rgba="0.80000001 0.12 0.12 1" friction="1.2 .01 .001" />

@@ -8,7 +8,7 @@ import hashlib
 import numpy as np
 import torch
 from torch.utils.data import Dataset
-from physical_ai.env import ManipulationEnv
+from physical_ai.env import ManipulationEnv, RUNTIME_PROVENANCE
 from physical_ai.rl import load_rl, sha256
 
 
@@ -141,15 +141,38 @@ def collect(
             rgb = []
             prop = []
             actions = []
-            for _ in range(max_steps):
-                obs = env.bc_observation()
-                action, _ = policy.predict(state, deterministic=True)
-                rgb.append(obs["rgb"])
-                prop.append(obs["proprio"])
-                actions.append(action)
-                state, _, done, truncated, info = env.step(action)
-                if done or truncated:
-                    break
+            preflight = None
+            if only_success:
+                # A deterministic state-only pass avoids expensive RGB rendering
+                # for rejected episodes. Accepted episodes are replayed exactly.
+                for step in range(max_steps):
+                    action, _ = policy.predict(state, deterministic=True)
+                    state, _, done, truncated, info = env.step(action)
+                    if done or truncated:
+                        break
+                preflight = dict(
+                    success=info["is_success"], steps=step + 1, state=state.copy()
+                )
+                if preflight["success"]:
+                    state, _ = env.reset(seed=seed + attempt)
+            if not only_success or preflight["success"]:
+                for _ in range(max_steps):
+                    obs = env.bc_observation()
+                    action, _ = policy.predict(state, deterministic=True)
+                    rgb.append(obs["rgb"])
+                    prop.append(obs["proprio"])
+                    actions.append(action)
+                    state, _, done, truncated, info = env.step(action)
+                    if done or truncated:
+                        break
+                if preflight is not None and (
+                    not info["is_success"]
+                    or len(actions) != preflight["steps"]
+                    or not np.allclose(state, preflight["state"], atol=1e-6, rtol=0)
+                ):
+                    raise RuntimeError(
+                        "Deterministic PPO replay differed from preflight; episode not saved"
+                    )
             meta = dict(
                 robot=robot,
                 task=task,
@@ -159,6 +182,7 @@ def collect(
                 source="ppo",
                 success=info["is_success"],
                 failure=info["failure"],
+                runtime_provenance=dict(RUNTIME_PROVENANCE),
             )
             attempts.append({"seed": seed + attempt, "success": info["is_success"]})
             if info["is_success"] or not only_success:
@@ -180,6 +204,8 @@ def collect(
                     requested=episodes,
                     attempts=attempts,
                     only_success=only_success,
+                    state_only_preflight=only_success,
+                    runtime_provenance=dict(RUNTIME_PROVENANCE),
                 ),
                 indent=2,
             )

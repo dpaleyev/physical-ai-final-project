@@ -1,0 +1,292 @@
+[
+  {
+    "target": "iiwa14/color_match",
+    "rl_successes": 47,
+    "rl_episodes": 50,
+    "rl_success_rate": 0.94,
+    "wilson_95": [
+      0.8378290831116182,
+      0.979385029651026
+    ],
+    "by_goal_slot": {
+      "0": {
+        "n": 29,
+        "successes": 28,
+        "success_rate": 0.9655172413793104
+      },
+      "1": {
+        "n": 21,
+        "successes": 19,
+        "success_rate": 0.9047619047619048
+      }
+    },
+    "expert_sha256": "8049ec5126816935e6896b51aa4eec8ff8f0a15661c07ee3817b28472156ee12",
+    "original_checkpoint": "runs/calibration/iiwa14_color_precise/phase_0_attempt_0/last.zip",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    },
+    "train_episodes": 20,
+    "val_episodes": 5,
+    "train_transitions": 4098,
+    "val_transitions": 989,
+    "bc_pilot_epochs": 3,
+    "bc_pilot_success_rate": 0.2,
+    "bc_pilot_episodes": 5,
+    "bc_claim": "Training/export/inference on real successful PPO data; short BC pilot only",
+    "final_stage_parameter_delta_l2": 2.95552921295166
+  },
+  {
+    "target": "iiwa14/cup_distractor",
+    "rl_successes": 50,
+    "rl_episodes": 50,
+    "rl_success_rate": 1.0,
+    "wilson_95": [
+      0.9286524008666414,
+      1.0
+    ],
+    "by_goal_slot": {
+      "0": {
+        "n": 50,
+        "successes": 50,
+        "success_rate": 1.0
+      }
+    },
+    "expert_sha256": "9e01fb2d3af6ec05d944a01d5cfd4f262678d6236fd85456bd077e8b0b0078a8",
+    "original_checkpoint": "runs/calibration/iiwa14_distractor_v2/last.zip",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "b95f6c6f19060386f879b38de02f2f24dc56f5bbf365d922f99b6ac2937001ac",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    },
+    "train_episodes": 20,
+    "val_episodes": 5,
+    "train_transitions": 2598,
+    "val_transitions": 651,
+    "bc_pilot_epochs": 3,
+    "bc_pilot_success_rate": 1.0,
+    "bc_pilot_episodes": 5,
+    "bc_claim": "Training/export/inference on real successful PPO data; short BC pilot only",
+    "final_stage_parameter_delta_l2": 5.814976692199707
+  },
+  {
+    "target": "iiwa14/cup_plate",
+    "rl_successes": 50,
+    "rl_episodes": 50,
+    "rl_success_rate": 1.0,
+    "wilson_95": [
+      0.9286524008666414,
+      1.0
+    ],
+    "by_goal_slot": {
+      "0": {
+        "n": 50,
+        "successes": 50,
+        "success_rate": 1.0
+      }
+    },
+    "expert_sha256": "e123c0b0523fd54b313f4ec516b0388dcb34e2c3727a0683d51e4c9aeed0810b",
+    "original_checkpoint": "runs/calibration/iiwa14_plate_transfer/last.zip",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "b95f6c6f19060386f879b38de02f2f24dc56f5bbf365d922f99b6ac2937001ac",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    },
+    "train_episodes": 20,
+    "val_episodes": 5,
+    "train_transitions": 2773,
+    "val_transitions": 693,
+    "bc_pilot_epochs": 3,
+    "bc_pilot_success_rate": 1.0,
+    "bc_pilot_episodes": 5,
+    "bc_claim": "Training/export/inference on real successful PPO data; short BC pilot only",
+    "final_stage_parameter_delta_l2": 7.380276203155518
+  },
+  {
+    "target": "iiwa14/cup_shelf",
+    "rl_successes": 50,
+    "rl_episodes": 50,
+    "rl_success_rate": 1.0,
+    "wilson_95": [
+      0.9286524008666414,
+      1.0
+    ],
+    "by_goal_slot": {
+      "0": {
+        "n": 50,
+        "successes": 50,
+        "success_rate": 1.0
+      }
+    },
+    "expert_sha256": "901e91f34aca44ec8bedfa420e8660e25847bab33437c6b2df690bcecc25e7da",
+    "original_checkpoint": "runs/calibration/iiwa14_platform_finetune/last.zip",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "eb33e12c32b9bb155520464b91201c7b931992cd743b0d6f614003c2c5d39177",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    },
+    "train_episodes": 20,
+    "val_episodes": 5,
+    "train_transitions": 4226,
+    "val_transitions": 1024,
+    "bc_pilot_epochs": 3,
+    "bc_pilot_success_rate": 0.0,
+    "bc_pilot_episodes": 5,
+    "bc_claim": "Training/export/inference on real successful PPO data; short BC pilot only",
+    "final_stage_parameter_delta_l2": 0.4410947561264038
+  },
+  {
+    "target": "ur5e/color_match",
+    "rl_successes": 50,
+    "rl_episodes": 50,
+    "rl_success_rate": 1.0,
+    "wilson_95": [
+      0.9286524008666414,
+      1.0
+    ],
+    "by_goal_slot": {
+      "0": {
+        "n": 30,
+        "successes": 30,
+        "success_rate": 1.0
+      },
+      "1": {
+        "n": 20,
+        "successes": 20,
+        "success_rate": 1.0
+      }
+    },
+    "expert_sha256": "db31f693cbf9937fd7dc048acdc78224c2808cbb08f964d7e506bf77bd77739a",
+    "original_checkpoint": "runs/calibration/ur5e_color_sde/phase_0_attempt_0/last.zip",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "b95f6c6f19060386f879b38de02f2f24dc56f5bbf365d922f99b6ac2937001ac",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    },
+    "train_episodes": 20,
+    "val_episodes": 5,
+    "train_transitions": 957,
+    "val_transitions": 239,
+    "bc_pilot_epochs": 3,
+    "bc_pilot_success_rate": 0.0,
+    "bc_pilot_episodes": 5,
+    "bc_claim": "Training/export/inference on real successful PPO data; short BC pilot only",
+    "final_stage_parameter_delta_l2": 4.628093719482422
+  },
+  {
+    "target": "ur5e/cup_distractor",
+    "rl_successes": 50,
+    "rl_episodes": 50,
+    "rl_success_rate": 1.0,
+    "wilson_95": [
+      0.9286524008666414,
+      1.0
+    ],
+    "by_goal_slot": {
+      "0": {
+        "n": 50,
+        "successes": 50,
+        "success_rate": 1.0
+      }
+    },
+    "expert_sha256": "645682b524089c36e0a18b2ff9fdb2c0537bf79e097d585f012228df065adbf8",
+    "original_checkpoint": "runs/calibration/ur5e_distractor_v2/last.zip",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "b95f6c6f19060386f879b38de02f2f24dc56f5bbf365d922f99b6ac2937001ac",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    },
+    "train_episodes": 20,
+    "val_episodes": 5,
+    "train_transitions": 978,
+    "val_transitions": 247,
+    "bc_pilot_epochs": 3,
+    "bc_pilot_success_rate": 0.2,
+    "bc_pilot_episodes": 5,
+    "bc_claim": "Training/export/inference on real successful PPO data; short BC pilot only",
+    "final_stage_parameter_delta_l2": 7.1746439933776855
+  },
+  {
+    "target": "ur5e/cup_plate",
+    "rl_successes": 50,
+    "rl_episodes": 50,
+    "rl_success_rate": 1.0,
+    "wilson_95": [
+      0.9286524008666414,
+      1.0
+    ],
+    "by_goal_slot": {
+      "0": {
+        "n": 50,
+        "successes": 50,
+        "success_rate": 1.0
+      }
+    },
+    "expert_sha256": "65fdc8990b0371f02e20f7536539c5b20cc4637cc8630f5527aafb9c98b33eac",
+    "original_checkpoint": "runs/calibration/ur5e_reverse_sde/phase_30_attempt_0/last.zip",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "b95f6c6f19060386f879b38de02f2f24dc56f5bbf365d922f99b6ac2937001ac",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    },
+    "train_episodes": 20,
+    "val_episodes": 5,
+    "train_transitions": 2046,
+    "val_transitions": 523,
+    "bc_pilot_epochs": 3,
+    "bc_pilot_success_rate": 0.4,
+    "bc_pilot_episodes": 5,
+    "bc_claim": "Training/export/inference on real successful PPO data; short BC pilot only",
+    "final_stage_parameter_delta_l2": 4.743786334991455
+  },
+  {
+    "target": "ur5e/cup_shelf",
+    "rl_successes": 49,
+    "rl_episodes": 50,
+    "rl_success_rate": 0.98,
+    "wilson_95": [
+      0.8950455641036219,
+      0.9964607407283539
+    ],
+    "by_goal_slot": {
+      "0": {
+        "n": 50,
+        "successes": 49,
+        "success_rate": 0.98
+      }
+    },
+    "expert_sha256": "c9ae52578760aafad5564f1113b60a6d8ab03696102b5720da8dc875d6bcefc3",
+    "original_checkpoint": "runs/calibration/ur5e_shelf_mix/phase_0_attempt_0/last.zip",
+    "runtime_provenance": {
+      "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+      "scenes_sha256": "b95f6c6f19060386f879b38de02f2f24dc56f5bbf365d922f99b6ac2937001ac",
+      "mujoco_version": "3.3.7",
+      "reward_version": 3,
+      "success_version": 2
+    },
+    "train_episodes": 20,
+    "val_episodes": 5,
+    "train_transitions": 1150,
+    "val_transitions": 318,
+    "bc_pilot_epochs": 3,
+    "bc_pilot_success_rate": 0.0,
+    "bc_pilot_episodes": 5,
+    "bc_claim": "Training/export/inference on real successful PPO data; short BC pilot only",
+    "final_stage_parameter_delta_l2": 4.35213041305542
+  }
+]

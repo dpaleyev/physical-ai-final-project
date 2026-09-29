@@ -142,6 +142,8 @@ def build_scene(robot, task, parameters=None):
             forcerange="-8 8",
         )
     starts, goals = scene_layout(task)
+    if robot == "iiwa14" and task == "cup_shelf":
+        goals = [[0.48, 0.17, 0.488]]
     for i, start in enumerate(starts):
         cup = add(wb, "body", name=f"cup{i}", pos=vec(start))
         add(cup, "freejoint", name=f"cup{i}_free")
@@ -156,6 +158,10 @@ def build_scene(robot, task, parameters=None):
             rgba=vec(COLORS[i]),
             friction="1.2 .01 .001",
         )
+        # A visible lid prevents a finger entering the hollow vessel and hooking
+        # its inside wall. The beginner task uses closed drinking cups.
+        add(cup, "geom", name=f"cup{i}_lid", type="cylinder", size=".027 .003",
+            pos="0 0 .032", mass=".006", rgba=vec(COLORS[i]), friction="1.2 .01 .001")
         # Hollow cup: collision geometry follows the visible walls.
         for j in range(12):
             theta = 2 * math.pi * j / 12
@@ -243,8 +249,8 @@ def build_scene(robot, task, parameters=None):
                     "geom",
                     name=f"shelf_leg_{side}",
                     type="box",
-                    size=".012 .075 .075",
-                    pos=f"{side*.115} 0 -.09",
+                    size=".012 .075 .012" if robot == "iiwa14" else ".012 .075 .075",
+                    pos=f"{side*.115} 0 -.042" if robot == "iiwa14" else f"{side*.115} 0 -.09",
                     rgba=".5 .3 .16 1",
                 )
     apply_parameters(root, parameters or {})

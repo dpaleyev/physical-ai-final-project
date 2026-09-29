@@ -1,0 +1,7 @@
+{
+  "configurations": 64,
+  "episodes_each": 1,
+  "max_steps": 2,
+  "errors": 0,
+  "scope": "Interface only; BC variants reuse one pilot, no quality or robustness claim"
+}

@@ -1,0 +1,45 @@
+{
+  "robot": "iiwa14",
+  "task": "color_match",
+  "expert_sha256": "8049ec5126816935e6896b51aa4eec8ff8f0a15661c07ee3817b28472156ee12",
+  "rl_success_rate": 0.94,
+  "rl_successes": 47,
+  "rl_episodes": 50,
+  "by_goal_slot": {
+    "0": {
+      "n": 29,
+      "successes": 28,
+      "success_rate": 0.9655172413793104
+    },
+    "1": {
+      "n": 21,
+      "successes": 19,
+      "success_rate": 0.9047619047619048
+    }
+  },
+  "train_episodes": 20,
+  "val_episodes": 5,
+  "train_transitions": 4098,
+  "val_transitions": 989,
+  "bc_epochs": 3,
+  "bc_history": [
+    {
+      "epoch": 1,
+      "train_mse": 0.1343963745983273,
+      "val_mse": 0.09109867267928362
+    },
+    {
+      "epoch": 2,
+      "train_mse": 0.06606120814325214,
+      "val_mse": 0.044312654964294367
+    },
+    {
+      "epoch": 3,
+      "train_mse": 0.04404579938365271,
+      "val_mse": 0.03529661170868966
+    }
+  ],
+  "bc_success_rate": 0.2,
+  "bc_claim": "Training/export/inference on real successful PPO data; short BC pilot only",
+  "elapsed_seconds": 1049.9588340629998
+}

@@ -1,0 +1,74 @@
+{
+  "robot": "ur5e",
+  "task": "color_match",
+  "parameters": {},
+  "max_steps": 1000,
+  "success_rate": 0.0,
+  "successes": 0,
+  "n": 5,
+  "wilson_95": [
+    0.0,
+    0.43448246478317476
+  ],
+  "episodes": [
+    {
+      "seed": 103000,
+      "goal_slot": 1,
+      "success": false,
+      "steps": 1000,
+      "reward": -3.0208552414376455,
+      "failure": "timeout"
+    },
+    {
+      "seed": 103001,
+      "goal_slot": 0,
+      "success": false,
+      "steps": 1000,
+      "reward": -3.6931559532231732,
+      "failure": "timeout"
+    },
+    {
+      "seed": 103002,
+      "goal_slot": 0,
+      "success": false,
+      "steps": 1000,
+      "reward": -3.528779384324421,
+      "failure": "timeout"
+    },
+    {
+      "seed": 103003,
+      "goal_slot": 1,
+      "success": false,
+      "steps": 1000,
+      "reward": -3.0222474212611803,
+      "failure": "timeout"
+    },
+    {
+      "seed": 103004,
+      "goal_slot": 0,
+      "success": false,
+      "steps": 1000,
+      "reward": -3.698493038347839,
+      "failure": "timeout"
+    }
+  ],
+  "by_goal_slot": {
+    "0": {
+      "n": 3,
+      "successes": 0,
+      "success_rate": 0.0
+    },
+    "1": {
+      "n": 2,
+      "successes": 0,
+      "success_rate": 0.0
+    }
+  },
+  "runtime_provenance": {
+    "environment_sha256": "2f5a756808e8b68697b288370c057fffe2686a43a523b002390aa1856f994443",
+    "scenes_sha256": "b95f6c6f19060386f879b38de02f2f24dc56f5bbf365d922f99b6ac2937001ac",
+    "mujoco_version": "3.3.7",
+    "reward_version": 3,
+    "success_version": 2
+  }
+}

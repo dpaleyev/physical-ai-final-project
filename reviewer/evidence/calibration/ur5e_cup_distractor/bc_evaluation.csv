@@ -1,0 +1,6 @@
+seed,goal_slot,success,steps,reward,failure
+93000,0,False,520,-18.77484674028551,distractor_moved
+93001,0,True,57,94.94905297007821,
+93002,0,False,537,-13.402520948443058,distractor_moved
+93003,0,False,522,-25.057613469637076,distractor_moved
+93004,0,False,539,-18.56191270639114,distractor_moved

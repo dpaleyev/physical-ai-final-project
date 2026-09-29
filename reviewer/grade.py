@@ -64,7 +64,9 @@ def grade(submission_path, out, episodes=50, seed=738921, max_steps=1000, video=
                     for i in range(episodes):
                         episode_seed = seed + i
                         params = (
-                            {} if split == "base" else scenario(task, seed + 100000 + i)
+                            {}
+                            if split == "base"
+                            else scenario(task, seed + 100000 + i, robot=robot)
                         )
                         result = evaluate(
                             robot,

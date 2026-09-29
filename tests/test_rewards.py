@@ -43,3 +43,43 @@ def test_finishing_beats_stalling_at_goal():
     finish_return, finish_success = decision_return(True)
     assert finish_success and not stall_success
     assert finish_return > stall_return
+
+
+def test_potential_guides_release_and_retreat_at_goal():
+    import mujoco
+
+    with ManipulationEnv() as env:
+        adr = int(env.model.joint("cup0_free").qposadr[0])
+        env.data.qpos[adr : adr + 3] = env.goals[0]
+        env.data.qpos[env.arm_q] = env._ik(env.goals[0] + [0, 0, 0.008], iterations=140)
+        env.data.qpos[env.jaw_q] = 0.02
+        mujoco.mj_forward(env.model, env.data)
+        holding = env._potential()
+        env.data.qpos[env.arm_q] = env._ik(env.goals[0] + [0, 0, 0.16], iterations=140)
+        env.data.qpos[env.jaw_q] = 0.045
+        mujoco.mj_forward(env.model, env.data)
+        released = env._potential()
+        assert released > holding
+
+
+def test_untouched_distractor_contact_jitter_does_not_block_placement():
+    import numpy as np
+    import mujoco
+    from physical_ai.env import ManipulationEnv
+    from reviewer.physical_probe import transfer
+
+    with ManipulationEnv("ur5e", "cup_distractor") as env:
+        env.reset(seed=1)
+        transfer(env, "cup0", env.goals[0])
+        for _ in range(120):
+            env.step([0, 0, 0, 1])
+        neighbor = env.data.body("cup1")
+        velocity = np.zeros(6)
+        mujoco.mj_objectVelocity(
+            env.model, env.data, mujoco.mjtObj.mjOBJ_BODY, neighbor.id, velocity, 0
+        )
+        assert not env._distractor_moved
+        assert np.linalg.norm(neighbor.xpos[:2] - env.goals[1, :2]) < 0.02
+        assert neighbor.xmat.reshape(3, 3)[2, 2] > 0.99
+        assert np.linalg.norm(velocity[:3]) > 0.6
+        assert env.placement_complete()

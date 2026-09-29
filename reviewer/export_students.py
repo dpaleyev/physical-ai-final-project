@@ -45,7 +45,7 @@ def export_students(destination):
             )
         shutil.copytree(ROOT / "docs/images", destination / "docs/images")
         (destination / "tests").mkdir()
-        for name in ["test_environment.py", "test_pipeline.py"]:
+        for name in ["test_environment.py", "test_pipeline.py", "test_curriculum.py"]:
             shutil.copy2(ROOT / "tests" / name, destination / "tests" / name)
         shutil.copy2(ROOT / "reviewer/STUDENT_README.md", destination / "README.md")
         (destination / ".github/workflows").mkdir(parents=True)

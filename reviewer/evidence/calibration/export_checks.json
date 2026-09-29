@@ -1,0 +1,12 @@
+{
+  "validated_outputs": 8,
+  "validated_banks": 6,
+  "public_tests": 37,
+  "real_bank_ppo_smoke_timesteps": 32,
+  "parameter_delta_l2": 0.36445775628089905,
+  "smoke_checkpoint_sha256": "f572f30d75939a3a0adc78915461e67c863fe0b64f2942ab7a48d6f3ccc062fa",
+  "scope": "Installation and state-bank compatibility, not an expert-quality claim",
+  "student_zip_sha256": "8e74eb50c144b97386bee048f3e6ced5d0aa1323b5133542d658949b6d97ae34",
+  "recipe_sha256": "ed55ecd03a2b939914ced8e9a6d314cff1af3bc9e18373544ac250a704be3fcf",
+  "public_recipe_stages_without_scene_overrides": 162
+}
