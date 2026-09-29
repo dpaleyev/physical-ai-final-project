@@ -9,62 +9,6 @@
       "bc_baseline": "artifacts/ur5e/cup_plate/baseline/best.ts",
       "bc_proprio": "artifacts/ur5e/cup_plate/proprio/best.ts",
       "bc_robust": "artifacts/ur5e/cup_plate/robust/best.ts"
-    },
-    {
-      "robot": "ur5e",
-      "task": "cup_shelf",
-      "rl": "artifacts/ur5e/cup_shelf/rl/last.zip",
-      "bc_baseline": "artifacts/ur5e/cup_shelf/baseline/best.ts",
-      "bc_proprio": "artifacts/ur5e/cup_shelf/proprio/best.ts",
-      "bc_robust": "artifacts/ur5e/cup_shelf/robust/best.ts"
-    },
-    {
-      "robot": "ur5e",
-      "task": "cup_distractor",
-      "rl": "artifacts/ur5e/cup_distractor/rl/last.zip",
-      "bc_baseline": "artifacts/ur5e/cup_distractor/baseline/best.ts",
-      "bc_proprio": "artifacts/ur5e/cup_distractor/proprio/best.ts",
-      "bc_robust": "artifacts/ur5e/cup_distractor/robust/best.ts"
-    },
-    {
-      "robot": "ur5e",
-      "task": "color_match",
-      "rl": "artifacts/ur5e/color_match/rl/last.zip",
-      "bc_baseline": "artifacts/ur5e/color_match/baseline/best.ts",
-      "bc_proprio": "artifacts/ur5e/color_match/proprio/best.ts",
-      "bc_robust": "artifacts/ur5e/color_match/robust/best.ts"
-    },
-    {
-      "robot": "iiwa14",
-      "task": "cup_plate",
-      "rl": "artifacts/iiwa14/cup_plate/rl/last.zip",
-      "bc_baseline": "artifacts/iiwa14/cup_plate/baseline/best.ts",
-      "bc_proprio": "artifacts/iiwa14/cup_plate/proprio/best.ts",
-      "bc_robust": "artifacts/iiwa14/cup_plate/robust/best.ts"
-    },
-    {
-      "robot": "iiwa14",
-      "task": "cup_shelf",
-      "rl": "artifacts/iiwa14/cup_shelf/rl/last.zip",
-      "bc_baseline": "artifacts/iiwa14/cup_shelf/baseline/best.ts",
-      "bc_proprio": "artifacts/iiwa14/cup_shelf/proprio/best.ts",
-      "bc_robust": "artifacts/iiwa14/cup_shelf/robust/best.ts"
-    },
-    {
-      "robot": "iiwa14",
-      "task": "cup_distractor",
-      "rl": "artifacts/iiwa14/cup_distractor/rl/last.zip",
-      "bc_baseline": "artifacts/iiwa14/cup_distractor/baseline/best.ts",
-      "bc_proprio": "artifacts/iiwa14/cup_distractor/proprio/best.ts",
-      "bc_robust": "artifacts/iiwa14/cup_distractor/robust/best.ts"
-    },
-    {
-      "robot": "iiwa14",
-      "task": "color_match",
-      "rl": "artifacts/iiwa14/color_match/rl/last.zip",
-      "bc_baseline": "artifacts/iiwa14/color_match/baseline/best.ts",
-      "bc_proprio": "artifacts/iiwa14/color_match/proprio/best.ts",
-      "bc_robust": "artifacts/iiwa14/color_match/robust/best.ts"
     }
   ]
 }

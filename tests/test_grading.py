@@ -43,11 +43,43 @@ def test_advanced_scenarios_are_deterministic_and_physically_valid():
                 assert all(env.data.body(n).xpos[2] > 0.4 for n in env.object_names)
 
 
-def test_submission_rejects_missing_matrix_and_path_escape(tmp_path):
+@pytest.mark.parametrize("robot", ["ur5e", "iiwa14"])
+@pytest.mark.parametrize(
+    "task", ["cup_plate", "cup_shelf", "cup_distractor", "color_match"]
+)
+def test_submission_accepts_any_single_supported_pair(tmp_path, robot, task):
+    import json
     from reviewer.grade import validate_submission
 
-    with pytest.raises(ValueError, match="eight"):
-        validate_submission({"models": []}, tmp_path)
+    submission = json.loads(
+        (Path(__file__).parents[1] / "submission.example.json").read_text()
+    )
+    submission["models"][0].update(robot=robot, task=task)
+    (tmp_path / "REPORT.md").write_text("test")
+    assert validate_submission(submission, tmp_path) == submission["models"]
+
+
+def test_submission_rejects_wrong_count_unknown_pair_and_path_escape(tmp_path):
+    import copy
+    import json
+    from reviewer.grade import validate_submission
+
+    submission = json.loads(
+        (Path(__file__).parents[1] / "submission.example.json").read_text()
+    )
+    (tmp_path / "REPORT.md").write_text("test")
+    for entries in ([], submission["models"] * 2):
+        with pytest.raises(ValueError, match="exactly one"):
+            validate_submission(dict(submission, models=entries), tmp_path)
+    for key in ("robot", "task"):
+        invalid = copy.deepcopy(submission)
+        invalid["models"][0][key] = "unknown"
+        with pytest.raises(ValueError, match="Unsupported"):
+            validate_submission(invalid, tmp_path)
+    invalid = copy.deepcopy(submission)
+    invalid["models"][0]["rl"] = "../outside.zip"
+    with pytest.raises(ValueError, match="escapes"):
+        validate_submission(invalid, tmp_path)
 
 
 def test_color_targets_follow_appearance_not_indices():
@@ -78,19 +110,16 @@ def test_missing_model_artifacts_are_isolated_in_grading_report(tmp_path):
     import json
     from reviewer.grade import grade
 
-    models = []
-    for robot in ["ur5e", "iiwa14"]:
-        for task in ["cup_plate", "cup_shelf", "cup_distractor", "color_match"]:
-            models.append(
-                dict(
-                    robot=robot,
-                    task=task,
-                    rl="absent.zip",
-                    bc_baseline="absent.ts",
-                    bc_proprio="absent.ts",
-                    bc_robust="absent.ts",
-                )
-            )
+    models = [
+        dict(
+            robot="iiwa14",
+            task="color_match",
+            rl="absent.zip",
+            bc_baseline="absent.ts",
+            bc_proprio="absent.ts",
+            bc_robust="absent.ts",
+        )
+    ]
     (tmp_path / "REPORT.md").write_text("test")
     (tmp_path / "submission.json").write_text(
         json.dumps(dict(models=models, report="REPORT.md"))
@@ -98,7 +127,13 @@ def test_missing_model_artifacts_are_isolated_in_grading_report(tmp_path):
     results = grade(
         tmp_path / "submission.json", tmp_path / "out", episodes=1, max_steps=1
     )
-    assert len(results) == 64 and all("error" in row for row in results)
+    assert len(results) == 8 and all("error" in row for row in results)
+    assert {(r["robot"], r["task"]) for r in results} == {("iiwa14", "color_match")}
+    assert {(r["variant"], r["split"]) for r in results} == {
+        (v, split)
+        for v in ("rl", "bc_baseline", "bc_proprio", "bc_robust")
+        for split in ("base", "advanced")
+    }
     assert (tmp_path / "out/results.json").is_file()
 
 

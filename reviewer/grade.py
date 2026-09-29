@@ -23,12 +23,11 @@ def contained(root, relative, must_exist=True):
 
 def validate_submission(submission, root):
     entries = submission.get("models", [])
-    expected = {(r, t) for r in ROBOTS for t in TASKS}
-    if (
-        len(entries) != 8
-        or {(e.get("robot"), e.get("task")) for e in entries} != expected
-    ):
-        raise ValueError("Expected exactly eight distinct robot/task entries")
+    if len(entries) != 1:
+        raise ValueError("Expected exactly one robot/task entry")
+    entry = entries[0]
+    if entry.get("robot") not in ROBOTS or entry.get("task") not in TASKS:
+        raise ValueError("Unsupported robot/task pair")
     for entry in entries:
         for key in ("rl",) + VARIANTS:
             contained(root, entry[key], must_exist=False)
