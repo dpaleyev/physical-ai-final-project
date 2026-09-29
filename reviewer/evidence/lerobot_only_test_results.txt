@@ -1,0 +1,90 @@
+Local
+.....................................................                    [100%]
+=============================== warnings summary ===============================
+tests/test_curriculum.py: 9 warnings
+tests/test_lerobot.py: 2 warnings
+  /home/dpaleyev/practicum/physical-ai-final-project/.venv/lib/python3.12/site-packages/datasets/features/features.py:561: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+    return int(value)
+
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_writer_rejects_invalid_or_duplicate_episode
+tests/test_lerobot.py::test_collector_defaults_to_native_lerobot
+tests/test_pipeline.py::test_episode_roundtrip_rejects_misalignment_and_overlap
+  /home/dpaleyev/practicum/physical-ai-final-project/.venv/lib/python3.12/site-packages/lerobot/datasets/compute_stats.py:154: RuntimeWarning: Converting input from bool to <class 'numpy.uint8'> for compatibility.
+    hist, _ = np.histogram(batch[:, i], bins=self._bin_edges[i])
+
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_collector_defaults_to_native_lerobot
+tests/test_pipeline.py::test_episode_roundtrip_rejects_misalignment_and_overlap
+  /home/dpaleyev/practicum/physical-ai-final-project/.venv/lib/python3.12/site-packages/torchvision/io/_video_deprecation_warning.py:5: UserWarning: The video decoding and encoding capabilities of torchvision are deprecated from version 0.22 and will be removed in version 0.24. We recommend that you migrate to TorchCodec, where we'll consolidate the future decoding/encoding capabilities of PyTorch: https://github.com/pytorch/torchcodec
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+53 passed, 21 warnings in 8.94s
+
+
+Docker, network none
+.....................................................                    [100%]
+=============================== warnings summary ===============================
+tests/test_curriculum.py: 9 warnings
+tests/test_lerobot.py: 2 warnings
+  /usr/local/lib/python3.12/site-packages/datasets/features/features.py:561: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+    return int(value)
+
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_writer_rejects_invalid_or_duplicate_episode
+tests/test_lerobot.py::test_collector_defaults_to_native_lerobot
+tests/test_pipeline.py::test_episode_roundtrip_rejects_misalignment_and_overlap
+  /usr/local/lib/python3.12/site-packages/lerobot/datasets/compute_stats.py:154: RuntimeWarning: Converting input from bool to <class 'numpy.uint8'> for compatibility.
+    hist, _ = np.histogram(batch[:, i], bins=self._bin_edges[i])
+
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_collector_defaults_to_native_lerobot
+tests/test_pipeline.py::test_episode_roundtrip_rejects_misalignment_and_overlap
+  /usr/local/lib/python3.12/site-packages/torchvision/io/_video_deprecation_warning.py:5: UserWarning: The video decoding and encoding capabilities of torchvision are deprecated from version 0.22 and will be removed in version 0.24. We recommend that you migrate to TorchCodec, where we'll consolidate the future decoding/encoding capabilities of PyTorch: https://github.com/pytorch/torchcodec
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+53 passed, 21 warnings in 9.37s
+
+
+Student export
+..........................................                               [100%]
+=============================== warnings summary ===============================
+tests/test_curriculum.py: 9 warnings
+tests/test_lerobot.py: 2 warnings
+  /home/dpaleyev/practicum/physical-ai-final-project/.venv/lib/python3.12/site-packages/datasets/features/features.py:561: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
+    return int(value)
+
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_writer_rejects_invalid_or_duplicate_episode
+tests/test_lerobot.py::test_collector_defaults_to_native_lerobot
+tests/test_pipeline.py::test_episode_roundtrip_rejects_misalignment_and_overlap
+  /home/dpaleyev/practicum/physical-ai-final-project/.venv/lib/python3.12/site-packages/lerobot/datasets/compute_stats.py:154: RuntimeWarning: Converting input from bool to <class 'numpy.uint8'> for compatibility.
+    hist, _ = np.histogram(batch[:, i], bins=self._bin_edges[i])
+
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_collector_defaults_to_native_lerobot
+tests/test_pipeline.py::test_episode_roundtrip_rejects_misalignment_and_overlap
+  /home/dpaleyev/practicum/physical-ai-final-project/.venv/lib/python3.12/site-packages/torchvision/io/_video_deprecation_warning.py:5: UserWarning: The video decoding and encoding capabilities of torchvision are deprecated from version 0.22 and will be removed in version 0.24. We recommend that you migrate to TorchCodec, where we'll consolidate the future decoding/encoding capabilities of PyTorch: https://github.com/pytorch/torchcodec
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+42 passed, 21 warnings in 6.52s
+
+
+PPO train and reuse
+Train stage stage_000
+Final checkpoint: /home/dpaleyev/practicum/physical-ai-final-project/runs/lerobot_only_ppo/experts/ur5e/cup_plate/last.zip
+Reuse verified stage stage_000
+Final checkpoint: /home/dpaleyev/practicum/physical-ai-final-project/runs/lerobot_only_ppo/experts/ur5e/cup_plate/last.zip
+PASS: train, checkpoint load, verified stage reuse

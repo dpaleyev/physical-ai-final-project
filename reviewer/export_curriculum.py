@@ -4,10 +4,12 @@ import argparse
 import hashlib
 import inspect
 import json
+import shutil
 from pathlib import Path
 import numpy as np
 import mujoco
 
+from physical_ai.reset_states import bank_digest, read_bank
 from physical_ai.rl import train, sha256
 from physical_ai.scenes import ROOT, ROBOTS, TASKS, build_scene
 from physical_ai.curriculum import scene_fingerprint
@@ -81,26 +83,38 @@ def export(experts):
             )
         if options.get("curriculum_bank"):
             bank = Path(options["curriculum_bank"])
-            digest = sha256(bank)
-            if cfg.get("curriculum_bank_sha256") != digest:
-                raise ValueError(f"Bank hash mismatch: {bank}")
-            with np.load(bank, allow_pickle=False) as archive:
-                arrays = {key: archive[key].copy() for key in archive.files}
-            bank_meta = json.loads(str(arrays["metadata"]))
-            model_hash = bank_meta.get("model_sha256")
-            if not model_hash:
-                versions = json.loads(
-                    (ROOT / "reviewer/evidence/bank_scene_versions.json").read_text()
+            expected = cfg.get("curriculum_bank_sha256")
+            if bank.is_dir():
+                if bank_digest(bank) != expected:
+                    raise ValueError(f"Bank hash mismatch: {bank}")
+            else:
+                # Resolve immutable historical metadata to its verified replacement.
+                migrations = json.loads(
+                    (ROOT / "reviewer/evidence/reset_bank_migration.json").read_text()
                 )
-                model_hash = versions[bank_meta["scenes_sha256"]][
-                    f'{meta["robot"]}/{meta["task"]}'
-                ]
-            if model_hash != scene_fingerprint(meta["robot"], meta["task"]):
-                raise ValueError(f"Original bank belongs to a different scene: {bank}")
-            bank_meta.update(model_sha256=model_hash, source_bank_sha256=digest)
-            arrays["metadata"] = json.dumps(bank_meta)
-            dest = bank_dir / f'{meta["robot"]}_{meta["task"]}_source_{digest[:12]}.npz'
-            np.savez_compressed(dest, **arrays)
+                matches = [r for r in migrations if r["source_bank_sha256"] == expected]
+                if len(matches) != 1:
+                    raise ValueError(
+                        f"No verified LeRobot replacement for bank: {bank}"
+                    )
+                record = matches[0]
+                bank = ROOT / record["path"]
+                if bank_digest(bank) != record["bank_sha256"]:
+                    raise ValueError(f"Migrated bank hash mismatch: {bank}")
+            _, bank_meta = read_bank(bank)
+            if (bank_meta["robot"], bank_meta["task"]) != (meta["robot"], meta["task"]):
+                raise ValueError(f"Bank robot/task mismatch: {bank}")
+            if bank_meta.get("model_sha256") != scene_fingerprint(
+                meta["robot"], meta["task"]
+            ):
+                raise ValueError(f"Bank belongs to a different scene: {bank}")
+            dest = bank_dir / bank.name
+            if bank.resolve() != dest.resolve():
+                if dest.exists():
+                    if bank_digest(dest) != bank_digest(bank):
+                        raise ValueError(f"Exported bank differs: {dest}")
+                else:
+                    shutil.copytree(bank, dest)
             options["curriculum_bank"] = str(dest.relative_to(ROOT))
         key = f"stage_{len(stages):03d}"
         node = dict(

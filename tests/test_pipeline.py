@@ -10,7 +10,8 @@ def test_pipeline_modules_exist():
 
 
 def test_episode_roundtrip_rejects_misalignment_and_overlap(tmp_path):
-    from physical_ai.data import save_episode, EpisodeDataset, check_disjoint
+    from physical_ai.data import EpisodeDataset, check_disjoint
+    from physical_ai.lerobot_data import LeRobotWriter
 
     meta = dict(
         robot="ur5e",
@@ -24,10 +25,12 @@ def test_episode_roundtrip_rejects_misalignment_and_overlap(tmp_path):
     rgb = np.zeros((3, 84, 84, 3), np.uint8)
     prop = np.zeros((3, 16), np.float32)
     actions = np.zeros((3, 4), np.float32)
+    writer = LeRobotWriter(tmp_path / "episodes", "ur5e", "cup_plate")
     with pytest.raises(ValueError, match="length"):
-        save_episode(tmp_path / "bad.npz", rgb, prop, actions[:2], meta)
-    save_episode(tmp_path / "a.npz", rgb, prop, actions, meta)
-    ds = EpisodeDataset(tmp_path)
+        writer.add_episode(rgb, prop, actions[:2], meta)
+    writer.add_episode(rgb, prop, actions, meta)
+    writer.finalize()
+    ds = EpisodeDataset(tmp_path / "episodes")
     assert len(ds) == 3 and ds[0][0].shape == (3, 84, 84)
     with pytest.raises(ValueError, match="overlap"):
         check_disjoint(ds, ds)

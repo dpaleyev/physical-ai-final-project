@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+from physical_ai.reset_states import bank_digest
 import shutil
 
 from physical_ai.rl import train, load_rl, sha256
@@ -64,7 +65,7 @@ def run_recipe(recipe_path, target, out):
         fingerprint = dict(
             node=node,
             parent_sha256=parent_hashes,
-            bank_sha256=sha256(ROOT / bank) if bank else None,
+            bank_sha256=bank_digest(ROOT / bank) if bank else None,
             scenes_sha256=sha256(ROOT / "physical_ai/scenes.py"),
             env_sha256=sha256(ROOT / "physical_ai/env.py"),
             trainer_sha256=sha256(ROOT / "physical_ai/rl.py"),

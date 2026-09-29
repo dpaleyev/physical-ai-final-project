@@ -13,6 +13,7 @@ import torch
 from torch import nn
 from stable_baselines3.common.policies import ActorCriticPolicy
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
+from physical_ai.reset_states import read_bank
 from physical_ai.env import ManipulationEnv
 from physical_ai.scenes import ROOT, build_scene
 
@@ -103,9 +104,7 @@ class CurriculumEnv(ManipulationEnv):
         super().__init__(*args, **kwargs)
         if self.parameters:
             raise ValueError("Curriculum banks support unmodified base scenes only")
-        with np.load(Path(state_bank), allow_pickle=False) as archive:
-            self.bank = {key: archive[key].copy() for key in archive.files}
-        metadata = json.loads(str(self.bank["metadata"]))
+        self.bank, metadata = read_bank(state_bank)
         if (metadata["robot"], metadata["task"]) != (self.robot, self.task):
             raise ValueError("Curriculum bank robot/task mismatch")
         scene_hash = hashlib.sha256(

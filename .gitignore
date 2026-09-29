@@ -3,7 +3,7 @@ __pycache__/
 .pytest_cache/
 *.egg-info/
 runs/
-data/
+/data/
 dist/
 .superpowers/
 *.mp4

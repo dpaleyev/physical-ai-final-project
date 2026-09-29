@@ -5,6 +5,7 @@ from pathlib import Path
 import numpy as np
 from physical_ai.env import ManipulationEnv
 from physical_ai.curriculum import scene_fingerprint
+from physical_ai.reset_states import write_bank
 from physical_ai.rl import sha256
 from reviewer.physical_probe import transfer
 
@@ -73,8 +74,7 @@ def generate(robot, task, out, seeds=12, stride=0):
         ),
     )
     path = Path(out)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    np.savez_compressed(path, **arrays, metadata=json.dumps(metadata))
+    write_bank(path, arrays, metadata)
     print(path, len(rows), flush=True)
 
 

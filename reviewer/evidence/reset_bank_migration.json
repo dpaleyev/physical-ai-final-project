@@ -1,0 +1,50 @@
+[
+  {
+    "path": "assets/reset_states/iiwa14_color_match_source_f8ae859820be",
+    "source_bank_sha256": "f8ae859820be836e68aea8856c6fd844d19db808e5c3cd729126b1b86e57bcaf",
+    "removed_artifact_sha256": "dd467de6066f0b2258cf064a9e6cda3ebe70d475f52c2d5d82e631dd5555029b",
+    "bank_sha256": "a5107d131833adc92408680d089cac7a555b6ec6785eda9ab212bd7ef320fdb4",
+    "rows": 2844,
+    "parity": "exact shapes, dtypes and values"
+  },
+  {
+    "path": "assets/reset_states/ur5e_color_match_source_932d960163f6",
+    "source_bank_sha256": "932d960163f6d707f3480cea5d855626c1d7ba9ae48e84fe575eb6f008049e20",
+    "removed_artifact_sha256": "41b38175eae86552b47e70c12c68b3b7c3b155a54a54d163cd7dbd65bf4281a6",
+    "bank_sha256": "f58896d01e38c0770ce554527fbecf19321cb4faaec4dabc00fb9b82882de1c4",
+    "rows": 2844,
+    "parity": "exact shapes, dtypes and values"
+  },
+  {
+    "path": "assets/reset_states/ur5e_cup_plate_source_4cba8995241c",
+    "source_bank_sha256": "4cba8995241c7b5e221da0b6f22ac4d7bb1e90f05551c42f6409260e676bfbda",
+    "removed_artifact_sha256": "674ab27288b310fcd5aed4fe04620806043b1128e0c8a6e862a28e173332c77c",
+    "bank_sha256": "35d7f99df9da0e2255d44960dee7c9685ad74fe0010bb0103931d4ff6a0a2caa",
+    "rows": 96,
+    "parity": "exact shapes, dtypes and values"
+  },
+  {
+    "path": "assets/reset_states/ur5e_cup_plate_source_99d32b3fe76b",
+    "source_bank_sha256": "99d32b3fe76bbdc38ea35a8fac5306d514cb33299cefc068c9e8a3642dce208d",
+    "removed_artifact_sha256": "f536c00d28b5af2cefd1f7641dc1db25c6c222f3690a3e5e98c1450d626645fb",
+    "bank_sha256": "603ceac79f253f07e90a01d194df9514fcb7a14d7723ef9e394c66f6d623ec21",
+    "rows": 636,
+    "parity": "exact shapes, dtypes and values"
+  },
+  {
+    "path": "assets/reset_states/ur5e_cup_plate_source_df07fc965843",
+    "source_bank_sha256": "df07fc9658433e9f1e8b3f0f7bf9ff8fc9fb369a3ae2d65f91e31b6ba69fb61b",
+    "removed_artifact_sha256": "b5e1089d67b1ede4b30ba0845e141f267d9c0805d5090d3445efcedc94853c05",
+    "bank_sha256": "379321722d523a87b2fe4391d3822dfb0fce48bd0cef09e77f078cfe7b1551eb",
+    "rows": 2844,
+    "parity": "exact shapes, dtypes and values"
+  },
+  {
+    "path": "assets/reset_states/ur5e_cup_shelf_source_98ecd5fb6822",
+    "source_bank_sha256": "98ecd5fb68229e36c605298e57b47f15f78ca21c26d72fd213c6b3a373113f40",
+    "removed_artifact_sha256": "152672d32fc81c9ad6c304b16fb7613859ff2bc9108efcb0d93f10b7bb23a945",
+    "bank_sha256": "3904fd289e80f0b3518756abfb1813cc598f8a7a7b2f43b520509918d19e7c70",
+    "rows": 2844,
+    "parity": "exact shapes, dtypes and values"
+  }
+]

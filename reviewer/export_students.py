@@ -33,6 +33,9 @@ def export_students(destination):
         and destination.parts[len(ROOT.parts)] not in ("dist",)
     ):
         raise ValueError("Export outside repository or under dist/")
+    for name in DIRS:
+        if any(path.suffix.lower() == ".npz" for path in (ROOT / name).rglob("*")):
+            raise ValueError(f"Legacy dataset artifact in {name}; export aborted")
     destination.mkdir(parents=True)
     try:
         for name in FILES:

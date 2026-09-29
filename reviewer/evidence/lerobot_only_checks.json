@@ -1,0 +1,25 @@
+{
+  "dataset_format": "LeRobot v3.0",
+  "reset_state_datasets": 6,
+  "reset_state_rows": 12108,
+  "reset_numeric_parity": "exact shapes, dtypes and values",
+  "demonstration_episodes": 200,
+  "demonstration_transitions": 23510,
+  "deleted_project_npz_files": 636,
+  "current_project_npz_files": 0,
+  "current_project_archive_npz_entries": 0,
+  "scan_scope": "Project files and ZIP contents, excluding Git object history and third-party virtual environment fixtures",
+  "local_tests": 53,
+  "docker_tests": 53,
+  "student_tests": 42,
+  "ppo_smoke": {
+    "total_steps": 64,
+    "n_envs": 1,
+    "n_steps": 32,
+    "train": true,
+    "checkpoint_load": true,
+    "verified_stage_reuse": true,
+    "quality_claim": false
+  },
+  "independent_review": "Assignment CLI, no closed-scenario leakage, all six bank resets and hashes verified"
+}

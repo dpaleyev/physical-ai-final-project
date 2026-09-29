@@ -14,6 +14,7 @@ from stable_baselines3.common.logger import configure
 from stable_baselines3.common.callbacks import BaseCallback
 from physical_ai.env import DISCOUNT, REWARD_VERSION, ManipulationEnv
 from physical_ai.scenes import ROBOTS, TASKS
+from physical_ai.reset_states import bank_digest
 
 
 def sha256(path):
@@ -210,7 +211,9 @@ def train(
         checkpoint_every=checkpoint_every,
         curriculum_bank=str(curriculum_bank) if curriculum_bank else None,
         curriculum_phase=curriculum_phase if curriculum_bank else None,
-        curriculum_bank_sha256=sha256(curriculum_bank) if curriculum_bank else None,
+        curriculum_bank_sha256=(
+            bank_digest(curriculum_bank) if curriculum_bank else None
+        ),
         normal_fraction=normal_fraction,
         bounded_policy=bounded_policy,
         reset_std=reset_std,

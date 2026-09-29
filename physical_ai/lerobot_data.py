@@ -1,6 +1,5 @@
 """LeRobot v3 demonstrations (Parquet + MP4) with per-episode provenance."""
 
-import argparse
 from bisect import bisect_right
 import json
 from pathlib import Path
@@ -162,41 +161,3 @@ class LeRobotEpisodeDataset(Dataset):
             self._cache_index = ep
         i = index - self.offsets[ep]
         return tuple(x[i].clone() for x in self._cache)
-
-
-def convert_npz(source, out):
-    """Migrate old local episodes without rerunning the expert."""
-    from physical_ai.data import NPZEpisodeDataset
-    from physical_ai.rl import sha256
-
-    source = Path(source)
-    old = NPZEpisodeDataset(source)
-    first = old.metadata[0]
-    writer = LeRobotWriter(out, first["robot"], first["task"])
-    try:
-        for path, metadata in zip(old.paths, old.metadata, strict=True):
-            with np.load(path, allow_pickle=False) as ep:
-                writer.add_episode(
-                    ep["rgb"],
-                    ep["proprio"],
-                    ep["actions"],
-                    dict(metadata, original_npz_sha256=sha256(path)),
-                )
-    finally:
-        writer.finalize()
-    manifest = source / "manifest.json"
-    if manifest.exists():
-        data = json.loads(manifest.read_text())
-        data.update(
-            format="lerobot_v3", conversion="NPZ to Parquet/MP4; H264 video is lossy"
-        )
-        (Path(out) / "manifest.json").write_text(json.dumps(data, indent=2))
-    return Path(out)
-
-
-if __name__ == "__main__":
-    p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--source", required=True, help="Legacy NPZ episode directory")
-    p.add_argument("--out", required=True, help="New LeRobot v3 directory")
-    args = p.parse_args()
-    convert_npz(args.source, args.out)

@@ -155,11 +155,7 @@ def train(
     ]
     first = training.metadata[0]
     meta = dict(
-        data_format=(
-            "lerobot_v3"
-            if (Path(train_dir) / "meta/info.json").exists()
-            else "legacy_npz"
-        ),
+        data_format="lerobot_v3",
         robot=first["robot"],
         task=first["task"],
         seed=seed,

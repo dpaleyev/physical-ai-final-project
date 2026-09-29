@@ -104,3 +104,36 @@ def test_collector_defaults_to_native_lerobot(tmp_path, monkeypatch):
     assert not ds[0]["next.done"].item() and ds[1]["next.done"].item()
     np.testing.assert_allclose(ds[1]["action"].numpy(), [0, 0, 0, 1])
     assert json.loads((out / "manifest.json").read_text())["format"] == "lerobot_v3"
+
+
+def test_reset_bank_roundtrip_is_exact_and_detects_changed_content(tmp_path):
+    from physical_ai.reset_states import write_bank, read_bank, bank_digest
+    from lerobot.datasets.lerobot_dataset import LeRobotDataset
+
+    arrays = {
+        "qpos": np.array([[1.000000000000001, 2.0], [3.0, 4.0]], dtype=np.float64),
+        "rgba": np.arange(24, dtype=np.float32).reshape(2, 3, 4),
+        "phase": np.array([12, 236], dtype=np.int64),
+    }
+    metadata = dict(robot="ur5e", task="cup_plate", model_sha256="test")
+    root = tmp_path / "bank"
+    write_bank(root, arrays, metadata)
+    actual, meta = read_bank(root)
+    assert meta == metadata
+    for key, value in arrays.items():
+        assert actual[key].dtype == value.dtype
+        np.testing.assert_array_equal(actual[key], value)
+    official = LeRobotDataset("local/reset_ur5e_cup_plate", root=root)
+    assert official.meta.info["codebase_version"] == "v3.0" and len(official) == 2
+    before = bank_digest(root)
+    (root / "meta/reset_bank.json").write_text(
+        (root / "meta/reset_bank.json").read_text() + "\n"
+    )
+    assert bank_digest(root) != before
+
+
+def test_demonstration_loader_accepts_only_lerobot(tmp_path):
+    from physical_ai.data import EpisodeDataset
+
+    with pytest.raises(ValueError, match="LeRobot"):
+        EpisodeDataset(tmp_path)

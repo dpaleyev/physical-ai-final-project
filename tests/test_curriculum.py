@@ -6,6 +6,7 @@ import pytest
 import torch
 from physical_ai.env import ManipulationEnv
 from physical_ai.curriculum import CurriculumEnv
+from physical_ai.reset_states import read_bank, write_bank
 
 
 def bank_file(tmp_path):
@@ -31,8 +32,9 @@ def bank_file(tmp_path):
                 )
             ),
         )
-    path = tmp_path / "bank.npz"
-    np.savez_compressed(path, **row)
+    path = tmp_path / "bank"
+    metadata = json.loads(row.pop("metadata"))
+    write_bank(path, row, metadata)
     return path
 
 
@@ -142,15 +144,11 @@ def test_transfer_to_sde_preserves_deterministic_actor():
 
 def test_curriculum_window_samples_only_requested_stage_interval(tmp_path):
     path = bank_file(tmp_path)
-    with np.load(path, allow_pickle=False) as archive:
-        rows = {
-            key: np.repeat(archive[key], 3, axis=0)
-            for key in archive.files
-            if key != "metadata"
-        }
-        metadata = str(archive["metadata"])
+    original, metadata = read_bank(path)
+    rows = {key: np.repeat(value, 3, axis=0) for key, value in original.items()}
     rows["phase"] = np.array([234, 235, 236])
-    np.savez_compressed(path, **rows, metadata=metadata)
+    path = tmp_path / "window"
+    write_bank(path, rows, metadata)
     with CurriculumEnv(
         state_bank=path, phase=234, phase_window=1, normal_fraction=0
     ) as env:
@@ -270,19 +268,15 @@ def test_bank_model_fingerprint_survives_unrelated_source_edit_but_rejects_model
     from physical_ai.curriculum import scene_fingerprint
 
     original = bank_file(tmp_path)
-    with np.load(original) as bank:
-        arrays = {key: bank[key] for key in bank.files}
-    metadata = json.loads(str(arrays["metadata"]))
+    arrays, metadata = read_bank(original)
     metadata["scenes_sha256"] = "old-source-version"
     metadata["model_sha256"] = scene_fingerprint("ur5e", "cup_plate")
-    arrays["metadata"] = json.dumps(metadata)
-    compatible = tmp_path / "compatible.npz"
-    np.savez_compressed(compatible, **arrays)
+    compatible = tmp_path / "compatible"
+    write_bank(compatible, arrays, metadata)
     with CurriculumEnv(state_bank=compatible, phase=236) as env:
         assert env.reset(seed=0)[0].shape == (32,)
     metadata["model_sha256"] = "wrong-model"
-    arrays["metadata"] = json.dumps(metadata)
-    incompatible = tmp_path / "incompatible.npz"
-    np.savez_compressed(incompatible, **arrays)
+    incompatible = tmp_path / "incompatible"
+    write_bank(incompatible, arrays, metadata)
     with pytest.raises(ValueError, match="model hash"):
         CurriculumEnv(state_bank=incompatible, phase=236)

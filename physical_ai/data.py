@@ -1,13 +1,9 @@
 """Episode-aligned demonstrations and lazy episode loading."""
 
 import argparse
-from bisect import bisect_right
 import json
 from pathlib import Path
-import hashlib
 import numpy as np
-import torch
-from torch.utils.data import Dataset
 from physical_ai.env import ManipulationEnv, RUNTIME_PROVENANCE
 from physical_ai.rl import load_rl, sha256
 
@@ -19,96 +15,12 @@ def episode_key(meta):
     )
 
 
-def save_episode(path, rgb, proprio, actions, meta):
-    path = Path(path)
-    if path.exists():
-        raise FileExistsError(path)
-    if not (len(rgb) == len(proprio) == len(actions)) or not len(actions):
-        raise ValueError("Episode length mismatch or empty episode")
-    if rgb.shape[1:] != (84, 84, 3) or rgb.dtype != np.uint8:
-        raise ValueError("Expected uint8 RGB (T,84,84,3)")
-    if actions.shape[1:] != (4,) or proprio.ndim != 2:
-        raise ValueError("Invalid action/proprio shapes")
-    if (
-        not np.isfinite(actions).all()
-        or not np.isfinite(proprio).all()
-        or np.max(np.abs(actions)) > 1.00001
-    ):
-        raise ValueError("Invalid finite/range contract")
-    episode_key(meta)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    dones = np.zeros(len(actions), bool)
-    dones[-1] = True
-    np.savez_compressed(
-        path,
-        rgb=rgb,
-        proprio=proprio.astype(np.float32),
-        actions=actions.astype(np.float32),
-        dones=dones,
-        metadata=json.dumps(dict(meta, schema=1)),
-    )
-
-
-class NPZEpisodeDataset(Dataset):
-    def __init__(self, directory):
-        self.paths = sorted(Path(directory).glob("*.npz"))
-        if not self.paths:
-            raise ValueError(f"No episodes in {directory}")
-        self.metadata = []
-        self.offsets = [0]
-        self._cache_index = None
-        for path in self.paths:
-            with np.load(path, allow_pickle=False) as ep:
-                meta = json.loads(str(ep["metadata"]))
-                if meta.get("schema") != 1:
-                    raise ValueError("Unknown episode schema")
-                actions, prop = ep["actions"], ep["proprio"]
-                if (
-                    actions.shape != (len(prop), 4)
-                    or not np.isfinite(actions).all()
-                    or not np.isfinite(prop).all()
-                ):
-                    raise ValueError(f"Invalid episode: {path}")
-                self.metadata.append(meta)
-                self.offsets.append(self.offsets[-1] + len(actions))
-                self.proprio_dim = prop.shape[1]
-        keys = [episode_key(m) for m in self.metadata]
-        if len(set(keys)) != len(keys):
-            raise ValueError("Duplicate episode resets")
-        if len({(m["robot"], m["task"]) for m in self.metadata}) != 1:
-            raise ValueError("Expected one robot/task per dataset")
-
-    def __len__(self):
-        return self.offsets[-1]
-
-    def __getitem__(self, index):
-        if index < 0 or index >= len(self):
-            raise IndexError(index)
-        episode = bisect_right(self.offsets, index) - 1
-        if self._cache_index != episode:
-            with np.load(self.paths[episode], allow_pickle=False) as ep:
-                self._cache = {k: ep[k] for k in ("rgb", "proprio", "actions")}
-            self._cache_index = episode
-        i = index - self.offsets[episode]
-        return (
-            torch.from_numpy(self._cache["rgb"][i].copy()).permute(2, 0, 1).float()
-            / 255,
-            torch.from_numpy(self._cache["proprio"][i].copy()),
-            torch.from_numpy(self._cache["actions"][i].copy()),
-        )
-
-    def iter_proprio(self):
-        for path in self.paths:
-            with np.load(path, allow_pickle=False) as ep:
-                yield ep["proprio"].astype(float)
-
-
 def EpisodeDataset(directory):
-    if (Path(directory) / "meta/info.json").exists():
-        from physical_ai.lerobot_data import LeRobotEpisodeDataset
+    if not (Path(directory) / "meta/info.json").is_file():
+        raise ValueError(f"Expected a LeRobot v3 dataset directory: {directory}")
+    from physical_ai.lerobot_data import LeRobotEpisodeDataset
 
-        return LeRobotEpisodeDataset(directory)
-    return NPZEpisodeDataset(directory)
+    return LeRobotEpisodeDataset(directory)
 
 
 def check_disjoint(train, validation):
