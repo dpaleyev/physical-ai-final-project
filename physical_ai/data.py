@@ -49,7 +49,7 @@ def save_episode(path, rgb, proprio, actions, meta):
     )
 
 
-class EpisodeDataset(Dataset):
+class NPZEpisodeDataset(Dataset):
     def __init__(self, directory):
         self.paths = sorted(Path(directory).glob("*.npz"))
         if not self.paths:
@@ -97,6 +97,19 @@ class EpisodeDataset(Dataset):
             torch.from_numpy(self._cache["actions"][i].copy()),
         )
 
+    def iter_proprio(self):
+        for path in self.paths:
+            with np.load(path, allow_pickle=False) as ep:
+                yield ep["proprio"].astype(float)
+
+
+def EpisodeDataset(directory):
+    if (Path(directory) / "meta/info.json").exists():
+        from physical_ai.lerobot_data import LeRobotEpisodeDataset
+
+        return LeRobotEpisodeDataset(directory)
+    return NPZEpisodeDataset(directory)
+
 
 def check_disjoint(train, validation):
     if {episode_key(m) for m in train.metadata} & {
@@ -125,96 +138,103 @@ def collect(
     if episodes < 1 or max_attempts < episodes:
         raise ValueError("Invalid collection budget")
     policy, metadata = load_rl(checkpoint, robot, task)
+    from physical_ai.lerobot_data import LeRobotWriter
+
     out = Path(out)
-    out.mkdir(parents=True, exist_ok=True)
-    if list(out.iterdir()):
-        raise FileExistsError("Collection output must be empty")
-    bank = scene_bank or [{}]
-    accepted = 0
-    attempts = []
-    for attempt in range(max_attempts):
-        parameters = bank[attempt % len(bank)]
-        with ManipulationEnv(
-            robot, task, parameters=parameters, max_steps=max_steps
-        ) as env:
-            state, _ = env.reset(seed=seed + attempt)
-            rgb = []
-            prop = []
-            actions = []
-            preflight = None
-            if only_success:
-                # A deterministic state-only pass avoids expensive RGB rendering
-                # for rejected episodes. Accepted episodes are replayed exactly.
-                for step in range(max_steps):
-                    action, _ = policy.predict(state, deterministic=True)
-                    state, _, done, truncated, info = env.step(action)
-                    if done or truncated:
-                        break
-                preflight = dict(
-                    success=info["is_success"], steps=step + 1, state=state.copy()
-                )
-                if preflight["success"]:
-                    state, _ = env.reset(seed=seed + attempt)
-            if not only_success or preflight["success"]:
-                for _ in range(max_steps):
-                    obs = env.bc_observation()
-                    action, _ = policy.predict(state, deterministic=True)
-                    rgb.append(obs["rgb"])
-                    prop.append(obs["proprio"])
-                    actions.append(action)
-                    state, _, done, truncated, info = env.step(action)
-                    if done or truncated:
-                        break
-                if preflight is not None and (
-                    not info["is_success"]
-                    or len(actions) != preflight["steps"]
-                    or not np.allclose(state, preflight["state"], atol=1e-6, rtol=0)
-                ):
-                    raise RuntimeError(
-                        "Deterministic PPO replay differed from preflight; episode not saved"
+    if out.exists():
+        if any(out.iterdir()):
+            raise FileExistsError("Collection output must be empty")
+        out.rmdir()
+    writer = LeRobotWriter(out, robot, task)
+    try:
+        bank = scene_bank or [{}]
+        accepted = 0
+        attempts = []
+        for attempt in range(max_attempts):
+            parameters = bank[attempt % len(bank)]
+            with ManipulationEnv(
+                robot, task, parameters=parameters, max_steps=max_steps
+            ) as env:
+                state, _ = env.reset(seed=seed + attempt)
+                rgb = []
+                prop = []
+                actions = []
+                preflight = None
+                if only_success:
+                    # A deterministic state-only pass avoids expensive RGB rendering
+                    # for rejected episodes. Accepted episodes are replayed exactly.
+                    for step in range(max_steps):
+                        action, _ = policy.predict(state, deterministic=True)
+                        state, _, done, truncated, info = env.step(action)
+                        if done or truncated:
+                            break
+                    preflight = dict(
+                        success=info["is_success"], steps=step + 1, state=state.copy()
                     )
-            meta = dict(
-                robot=robot,
-                task=task,
-                seed=seed + attempt,
-                parameters=parameters,
-                expert_sha256=sha256(checkpoint),
-                source="ppo",
-                success=info["is_success"],
-                failure=info["failure"],
-                runtime_provenance=dict(RUNTIME_PROVENANCE),
-            )
-            attempts.append({"seed": seed + attempt, "success": info["is_success"]})
-            if info["is_success"] or not only_success:
-                save_episode(
-                    out / f"episode_{accepted:06d}.npz",
-                    np.asarray(rgb),
-                    np.asarray(prop),
-                    np.asarray(actions),
-                    meta,
-                )
-                accepted += 1
-        (out / "manifest.json").write_text(
-            json.dumps(
-                dict(
-                    schema=1,
+                    if preflight["success"]:
+                        state, _ = env.reset(seed=seed + attempt)
+                if not only_success or preflight["success"]:
+                    for _ in range(max_steps):
+                        obs = env.bc_observation()
+                        action, _ = policy.predict(state, deterministic=True)
+                        rgb.append(obs["rgb"])
+                        prop.append(obs["proprio"])
+                        actions.append(action)
+                        state, _, done, truncated, info = env.step(action)
+                        if done or truncated:
+                            break
+                    if preflight is not None and (
+                        not info["is_success"]
+                        or len(actions) != preflight["steps"]
+                        or not np.allclose(state, preflight["state"], atol=1e-6, rtol=0)
+                    ):
+                        raise RuntimeError(
+                            "Deterministic PPO replay differed from preflight; episode not saved"
+                        )
+                meta = dict(
                     robot=robot,
                     task=task,
-                    accepted=accepted,
-                    requested=episodes,
-                    attempts=attempts,
-                    only_success=only_success,
-                    state_only_preflight=only_success,
+                    seed=seed + attempt,
+                    parameters=parameters,
+                    expert_sha256=sha256(checkpoint),
+                    source="ppo",
+                    success=info["is_success"],
+                    failure=info["failure"],
                     runtime_provenance=dict(RUNTIME_PROVENANCE),
-                ),
-                indent=2,
+                )
+                attempts.append({"seed": seed + attempt, "success": info["is_success"]})
+                if info["is_success"] or not only_success:
+                    writer.add_episode(
+                        np.asarray(rgb),
+                        np.asarray(prop),
+                        np.asarray(actions),
+                        meta,
+                    )
+                    accepted += 1
+            (out / "manifest.json").write_text(
+                json.dumps(
+                    dict(
+                        schema=1,
+                        format="lerobot_v3",
+                        robot=robot,
+                        task=task,
+                        accepted=accepted,
+                        requested=episodes,
+                        attempts=attempts,
+                        only_success=only_success,
+                        state_only_preflight=only_success,
+                        runtime_provenance=dict(RUNTIME_PROVENANCE),
+                    ),
+                    indent=2,
+                )
             )
+            if accepted == episodes:
+                return
+        raise RuntimeError(
+            f"Collected {accepted}/{episodes} episodes in {max_attempts} attempts; evaluate/improve the PPO expert first. Partial data and attempt log retained."
         )
-        if accepted == episodes:
-            return
-    raise RuntimeError(
-        f"Collected {accepted}/{episodes} episodes in {max_attempts} attempts; evaluate/improve the PPO expert first. Partial data and attempt log retained."
-    )
+    finally:
+        writer.finalize()
 
 
 def main():

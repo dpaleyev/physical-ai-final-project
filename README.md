@@ -1,38 +1,93 @@
-# Physical AI — финальный проект
+# Финальный проект Physical AI
 
-**Приватный комплект организаторов.** Содержит студенческую основу и закрытые
-материалы проверки. Не выдавайте студентам доступ к этому репозиторию или его
-истории: экспортируйте отдельную студенческую поставку. Готовый ZIP находится
-в [черновике релиза](https://github.com/dpaleyev/physical-ai-final-project/releases).
+Два робота, четыре задачи, полный цикл RL → демонстрации → BC → робастность.
+Начните с [задания](ASSIGNMENT.md). Справочник API: [MuJoCo](MUJOCO_GUIDE.md).
 
-![Все восемь сцен](docs/images/scenes.png)
+## Установка
 
-- [Задание](ASSIGNMENT.md): 8 RL-политик, данные, BC, абляции, робастность.
-- [Быстрый старт](reviewer/STUDENT_README.md): установка и команды.
-- [Краткий MuJoCo](MUJOCO_GUIDE.md).
-- [Руководство проверяющего](reviewer/README.md).
-- [Фактическая валидация и ограничения](reviewer/VALIDATION.md).
+Python 3.12, Linux. На Windows используйте WSL2. GPU необязательна для просмотра
+и функциональных проверок; для больших BC-экспериментов рекомендуется GPU.
+CPU-версия PPO использует процессы MuJoCo. Полное обучение всех моделей существенно
+дороже короткой проверки установки; измеряйте скорость на своём оборудовании.
+Поставляемый рецепт запрашивает около 10.33 млн PPO-переходов суммарно для восьми
+политик с переиспользованием общих стадий. Фактический бюджет округляется до
+размера rollout; сбор RGB-данных и BC требуют дополнительных вычислений.
 
-Все восемь PPO-экспертов проверены на 50 обычных эпизодах каждый: SR 94–100%.
-Для каждой пары собраны 20 успешных train и 5 val демонстраций. Рецепт обучения
-использует curriculum начальных состояний и перенос весов; эта помощь явно
-описана в задании. Закрытый архив релиза содержит экспертов, данные и короткие
-BC-пилоты. Их результаты не заменяют полноценные студенческие BC-эксперименты.
+Распакуйте студенческий архив и откройте терминал в его корне, либо клонируйте
+выданный организаторами студенческий репозиторий.
 
 ```bash
+sudo apt-get update
+sudo apt-get install -y python3.12-venv python3.12-dev libosmesa6 libgl1 libglfw3 ffmpeg build-essential linux-libc-dev
 python3.12 -m venv .venv
 source .venv/bin/activate
-pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu
+pip install torch==2.7.1 torchvision==0.22.1 --index-url https://download.pytorch.org/whl/cpu
 pip install -r requirements-lock.txt
-MUJOCO_GL=osmesa python -m pytest -q
+export MUJOCO_GL=osmesa
+export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 LP_NUM_THREADS=2
+python -m pytest -q
+python -m physical_ai.scene_tools --robot ur5e --task cup_plate --snapshot runs/scene.png
+```
+
+Работайте из корня проекта: там находятся assets и конфигурации. Альтернатива
+локальной установке — `./scripts/run_container.sh`; CPU Docker содержит системные
+библиотеки, сохраняет результаты в смонтированный каталог и поддерживает snapshots
+и видео без дисплея. Он не предоставляет графический рабочий стол.
+
+Для интерактивного окна на Linux с графической сессией:
+
+```bash
+MUJOCO_GL=glfw python -m physical_ai.scene_tools --robot iiwa14 --task cup_distractor
+```
+
+Для сервера без дисплея используйте snapshots/видео. При рабочем NVIDIA-драйвере
+можно выбрать `MUJOCO_GL=egl`. Для CUDA-обучения BC установите PyTorch 2.7.1
+под свою CUDA-среду; поставляемый Docker использует CPU-сборку.
+
+Сцены: `scenes/{ur5e,iiwa14}_{cup_plate,cup_shelf,cup_distractor,color_match}.xml`.
+В команду просмотра подставляйте любую пару. Исходные роботы и лицензии в `assets/`.
+
+## Проверка запуска обучения
+
+```bash
+python -m physical_ai.rl --robot ur5e --task cup_plate \
+  --out runs/smoke_rl --total-steps 64 --n-steps 32 --n-envs 1
+```
+
+Это проверка обновления весов и сохранения, не обучение успешного эксперта.
+Полные команды обучения, сбора и оценки находятся в `ASSIGNMENT.md`.
+Начните с `configs/ppo_calibrated.json`: он задаёт проверенную последовательность
+стадий PPO и сохраняет отдельный checkpoint для каждой пары робот × задача.
+Промежуточные состояния curriculum — предоставленная помощь обучению; итоговый
+SR измеряйте на обычных начальных состояниях.
+Логи: `tensorboard --logdir runs`; метрики оценки сохраняются в JSON и CSV.
+
+| Каталог/файл | Назначение |
+|---|---|
+| `physical_ai/env.py`, `scenes.py` | среда, управление, генерация сцен |
+| `physical_ai/rl.py`, `curriculum.py`, `train_curriculum.py` | PPO, перенос между роботами, curriculum и воспроизведение рецепта |
+| `physical_ai/data.py`, `lerobot_data.py` | сбор и чтение LeRobot v3 (Parquet + MP4) |
+| `physical_ai/bc.py` | визуальный baseline, проприоцепция, экспорт |
+| `physical_ai/evaluate.py` | запуск политики и подсчёт доли успешных эпизодов |
+| `physical_ai/scene_tools.py` | просмотр и инспектор параметров |
+| `configs/` | исходные конфигурации и формат редактирования |
+| `REPORT_TEMPLATE.md` | структура отчёта |
+| `submission.example.json` | матрица сдаваемых моделей |
+
+Данные и checkpoints не коммитятся автоматически. Сохраняйте их отдельно с
+контрольными суммами. Источники и лицензии: `THIRD_PARTY_NOTICES.md`.
+
+<!-- ORGANIZER_ONLY -->
+## Организаторам
+
+Этот репозиторий приватный и содержит закрытую проверку. Студентам передавайте
+отдельный экспорт, а не доступ к репозиторию или его истории:
+
+```bash
 python -m reviewer.export_students dist/physical-ai-student --zip
 ```
 
-Системные библиотеки и Docker описаны в быстром старте. Экспорт использует явный
-список разрешённых файлов. В архиве нет `reviewer/`, `.git`, внутренних планов и
-проверок закрытых сценариев. README заменяется студенческой инструкцией.
-Для публикации студенческой версии создавайте новую git-историю **из экспорта**,
-а не ветку/форк этого приватного репозитория.
-
-Код нового проекта — MIT; модели Menagerie — BSD-3-Clause. Ревизии и источники
-сохранены в `THIRD_PARTY_NOTICES.md` и `assets/MENAGERIE_REVISION`.
+[Руководство проверяющего](reviewer/README.md) объясняет, как принять сдачу,
+запустить проверку и выставить баллы. Эталонные модели и измерения доступны
+в [приватном релизе](https://github.com/dpaleyev/physical-ai-final-project/releases).
+<!-- /ORGANIZER_ONLY -->

@@ -1,0 +1,18 @@
+{
+  "local_tests": 51,
+  "student_tests": 40,
+  "lerobot_version": "0.4.4",
+  "dataset_format": "v3.0",
+  "converted_episodes": 200,
+  "converted_transitions": 23510,
+  "numeric_parity": "exact",
+  "bc_compatibility_runs": 8,
+  "bc_epochs_each": 1,
+  "new_successful_ppo_collection_episodes": 1,
+  "student_zip_sha256": "9af78385c5d064da4b4ce2ba2da13faad771be321c5cfdda5a1f9e844a5c71ee",
+  "student_markdown_files": 5,
+  "scope": "Format migration and pipeline compatibility; historical RL quality unchanged; no new BC rollout quality claim",
+  "docker_tests": 51,
+  "docker_network": "none",
+  "docker_host_mounts": false
+}

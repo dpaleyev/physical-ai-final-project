@@ -12,10 +12,16 @@
   checkpoints, эксперименты в симуляторе. Здесь PPO реализован через Stable Baselines3
   с обычным MuJoCo, вместо RSL-RL/MJX: одна физическая среда для обучения и сбора.
 - [Практика 3](https://github.com/Yandex-Practicum/ap-physiclaai-3): визуомоторный BC,
-  автоматический сбор демонстраций, отдельная rollout-оценка.
+  автоматический сбор демонстраций в LeRobot v3, отдельная rollout-оценка.
 - [Практика 4](https://github.com/Yandex-Practicum/ap-physiclaai-4): добавление
   проприоцепции, сравнение baseline, абляции.
 
 Код практик не скопирован. Готовый дистиллированный эксперт практик 3/4 не используется.
 CNN-baseline здесь небольшой и обучается с нуля: обязательной загрузки сторонних
 предобученных весов нет. Студент может заменить энкодер.
+
+Происхождение исходных описаний: UR5e основан на URDF проекта
+[ros-industrial/universal_robot](https://github.com/ros-industrial/universal_robot/tree/kinetic-devel/ur_e_description),
+KUKA iiwa 14 — на описании разработчиков
+[Drake](https://github.com/RobotLocomotion/drake/blob/master/manipulation/models/iiwa_description/urdf/iiwa14_spheres_dense_collision.urdf).
+Лицензии и уведомления об авторских правах в `assets/*/LICENSE` сохранены.

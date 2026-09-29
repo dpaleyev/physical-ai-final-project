@@ -1,0 +1,9 @@
+{
+  "format": "LeRobot v3.0",
+  "episodes": 1,
+  "frames": 101,
+  "success": true,
+  "source": "ppo",
+  "expert_sha256": "65fdc8990b0371f02e20f7536539c5b20cc4637cc8630f5527aafb9c98b33eac",
+  "official_loader_frame_parity": true
+}

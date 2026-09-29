@@ -1,0 +1,130 @@
+[
+  {
+    "target": "ur5e/cup_plate",
+    "split": "train",
+    "episodes": 20,
+    "transitions": 2046,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "ur5e/cup_plate",
+    "split": "val",
+    "episodes": 5,
+    "transitions": 523,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "ur5e/cup_shelf",
+    "split": "train",
+    "episodes": 20,
+    "transitions": 1150,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "ur5e/cup_shelf",
+    "split": "val",
+    "episodes": 5,
+    "transitions": 318,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "ur5e/cup_distractor",
+    "split": "train",
+    "episodes": 20,
+    "transitions": 978,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "ur5e/cup_distractor",
+    "split": "val",
+    "episodes": 5,
+    "transitions": 247,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "ur5e/color_match",
+    "split": "train",
+    "episodes": 20,
+    "transitions": 957,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "ur5e/color_match",
+    "split": "val",
+    "episodes": 5,
+    "transitions": 239,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "iiwa14/cup_plate",
+    "split": "train",
+    "episodes": 20,
+    "transitions": 2773,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "iiwa14/cup_plate",
+    "split": "val",
+    "episodes": 5,
+    "transitions": 693,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "iiwa14/cup_distractor",
+    "split": "train",
+    "episodes": 20,
+    "transitions": 2598,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "iiwa14/cup_distractor",
+    "split": "val",
+    "episodes": 5,
+    "transitions": 651,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "iiwa14/cup_shelf",
+    "split": "train",
+    "episodes": 20,
+    "transitions": 4226,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "iiwa14/cup_shelf",
+    "split": "val",
+    "episodes": 5,
+    "transitions": 1024,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "iiwa14/color_match",
+    "split": "train",
+    "episodes": 20,
+    "transitions": 4098,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  },
+  {
+    "target": "iiwa14/color_match",
+    "split": "val",
+    "episodes": 5,
+    "transitions": 989,
+    "numeric_parity": "exact",
+    "format": "LeRobot v3.0"
+  }
+]

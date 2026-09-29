@@ -1,0 +1,59 @@
+Local
+...................................................                      [100%]
+=============================== warnings summary ===============================
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_writer_rejects_invalid_or_duplicate_episode
+tests/test_lerobot.py::test_collector_defaults_to_native_lerobot
+  /home/dpaleyev/practicum/physical-ai-final-project/.venv/lib/python3.12/site-packages/lerobot/datasets/compute_stats.py:154: RuntimeWarning: Converting input from bool to <class 'numpy.uint8'> for compatibility.
+    hist, _ = np.histogram(batch[:, i], bins=self._bin_edges[i])
+
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_collector_defaults_to_native_lerobot
+  /home/dpaleyev/practicum/physical-ai-final-project/.venv/lib/python3.12/site-packages/torchvision/io/_video_deprecation_warning.py:5: UserWarning: The video decoding and encoding capabilities of torchvision are deprecated from version 0.22 and will be removed in version 0.24. We recommend that you migrate to TorchCodec, where we'll consolidate the future decoding/encoding capabilities of PyTorch: https://github.com/pytorch/torchcodec
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+51 passed, 8 warnings in 8.88s
+
+Student export
+........................................                                 [100%]
+=============================== warnings summary ===============================
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_writer_rejects_invalid_or_duplicate_episode
+tests/test_lerobot.py::test_collector_defaults_to_native_lerobot
+  /home/dpaleyev/practicum/physical-ai-final-project/.venv/lib/python3.12/site-packages/lerobot/datasets/compute_stats.py:154: RuntimeWarning: Converting input from bool to <class 'numpy.uint8'> for compatibility.
+    hist, _ = np.histogram(batch[:, i], bins=self._bin_edges[i])
+
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_collector_defaults_to_native_lerobot
+  /home/dpaleyev/practicum/physical-ai-final-project/.venv/lib/python3.12/site-packages/torchvision/io/_video_deprecation_warning.py:5: UserWarning: The video decoding and encoding capabilities of torchvision are deprecated from version 0.22 and will be removed in version 0.24. We recommend that you migrate to TorchCodec, where we'll consolidate the future decoding/encoding capabilities of PyTorch: https://github.com/pytorch/torchcodec
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+40 passed, 8 warnings in 6.16s
+
+Docker without network
+...................................................                      [100%]
+=============================== warnings summary ===============================
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_writer_rejects_invalid_or_duplicate_episode
+tests/test_lerobot.py::test_collector_defaults_to_native_lerobot
+  /usr/local/lib/python3.12/site-packages/lerobot/datasets/compute_stats.py:154: RuntimeWarning: Converting input from bool to <class 'numpy.uint8'> for compatibility.
+    hist, _ = np.histogram(batch[:, i], bins=self._bin_edges[i])
+
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_lerobot_roundtrip_alignment_provenance_and_bc
+tests/test_lerobot.py::test_collector_defaults_to_native_lerobot
+  /usr/local/lib/python3.12/site-packages/torchvision/io/_video_deprecation_warning.py:5: UserWarning: The video decoding and encoding capabilities of torchvision are deprecated from version 0.22 and will be removed in version 0.24. We recommend that you migrate to TorchCodec, where we'll consolidate the future decoding/encoding capabilities of PyTorch: https://github.com/pytorch/torchcodec
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+51 passed, 8 warnings in 8.90s

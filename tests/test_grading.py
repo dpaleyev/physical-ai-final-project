@@ -17,7 +17,9 @@ def test_export_excludes_private_materials_and_history(tmp_path):
     assert len(list((dest / "scenes").glob("*.xml"))) == 8
     assert not (dest / "reviewer").exists()
     assert not (dest / ".git").exists()
-    assert not (dest / "docs/superpowers").exists()
+    assert not (dest / "docs").exists()
+    assert "ORGANIZER_ONLY" not in (dest / "README.md").read_text()
+    assert "reviewer/" not in (dest / "README.md").read_text()
     assert not (dest / "tests/test_grading.py").exists()
     with pytest.raises(FileExistsError):
         export_students(dest)

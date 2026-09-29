@@ -43,11 +43,16 @@ def export_students(destination):
                 destination / name,
                 ignore=shutil.ignore_patterns("__pycache__", "*.pyc"),
             )
-        shutil.copytree(ROOT / "docs/images", destination / "docs/images")
         (destination / "tests").mkdir()
-        for name in ["test_environment.py", "test_pipeline.py", "test_curriculum.py"]:
+        for name in [
+            "test_environment.py",
+            "test_pipeline.py",
+            "test_curriculum.py",
+            "test_lerobot.py",
+        ]:
             shutil.copy2(ROOT / "tests" / name, destination / "tests" / name)
-        shutil.copy2(ROOT / "reviewer/STUDENT_README.md", destination / "README.md")
+        readme = (ROOT / "README.md").read_text().split("<!-- ORGANIZER_ONLY -->", 1)[0]
+        (destination / "README.md").write_text(readme.rstrip() + "\n")
         (destination / ".github/workflows").mkdir(parents=True)
         shutil.copy2(
             ROOT / ".github/workflows/tests.yml",

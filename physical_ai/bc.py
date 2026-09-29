@@ -20,7 +20,7 @@ class EpisodeBatchSampler(Sampler):
         self.rng = np.random.default_rng(seed)
 
     def __iter__(self):
-        for episode in self.rng.permutation(len(self.dataset.paths)):
+        for episode in self.rng.permutation(len(self.dataset.metadata)):
             start, end = self.dataset.offsets[episode : episode + 2]
             indices = self.rng.permutation(np.arange(start, end))
             for i in range(0, len(indices), self.batch_size):
@@ -130,9 +130,7 @@ def train(
     count = 0
     total = np.zeros(training.proprio_dim)
     squares = total.copy()
-    for path in training.paths:
-        with np.load(path, allow_pickle=False) as ep:
-            p = ep["proprio"].astype(float)
+    for p in training.iter_proprio():
         count += len(p)
         total += p.sum(0)
         squares += (p * p).sum(0)
@@ -157,6 +155,11 @@ def train(
     ]
     first = training.metadata[0]
     meta = dict(
+        data_format=(
+            "lerobot_v3"
+            if (Path(train_dir) / "meta/info.json").exists()
+            else "legacy_npz"
+        ),
         robot=first["robot"],
         task=first["task"],
         seed=seed,

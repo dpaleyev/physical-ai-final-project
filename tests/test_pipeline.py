@@ -132,7 +132,7 @@ def test_episode_batch_sampler_never_loses_or_duplicates_frames():
     from physical_ai.bc import EpisodeBatchSampler
 
     class Data:
-        paths = ["a", "b"]
+        metadata = [{}, {}]
         offsets = [0, 5, 12]
 
     batches = list(EpisodeBatchSampler(Data(), 3, 12))
